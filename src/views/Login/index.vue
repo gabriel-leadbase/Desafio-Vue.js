@@ -2,7 +2,10 @@
   <main class="login">
     <div class="login__content">
       <div class="login__logo">
-        <img src="@/assets/images/logo.svg" alt="Logo">
+        <img
+          src="@/assets/images/logo.svg"
+          alt="Logo"
+        >
       </div>
 
       <h1 class="login__title">
@@ -11,19 +14,19 @@
 
       <form class="login__form">
         <Input
+          v-model="formData.email"
           required
           label="E-mail"
           name="email"
           type="email"
           placeholder="exemplo@seuemail.com"
-          v-model="formData.email"
         />
         <Input
+          v-model="formData.password"
           required
           label="Senha"
           name="password"
           type="password"
-          v-model="formData.password"
         />
         <RouterLink
           to="/home"

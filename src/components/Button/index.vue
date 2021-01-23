@@ -20,7 +20,7 @@
         :class="{'button__content--hidden': loading}"
       >
         <span class="label label--before">
-          <slot name="label:before"/>
+          <slot name="label:before" />
         </span>
 
         <span class="button__text">
@@ -28,7 +28,7 @@
         </span>
 
         <span class="label label--after">
-          <slot name="label:after"/>
+          <slot name="label:after" />
         </span>
       </div>
     </template>

@@ -1,7 +1,13 @@
 <template>
   <div class="product-card">
-    <div v-if="image_url" class="product-card__image">
-      <img :src="image_url" :alt="name">
+    <div
+      v-if="image_url"
+      class="product-card__image"
+    >
+      <img
+        :src="image_url"
+        :alt="name"
+      >
     </div>
 
     <div class="product-card__body">
@@ -36,7 +42,7 @@
         </button>
       </div>
       <div>
-        {{is_active ? 'Ativo' : 'Inativo'}}
+        {{ is_active ? 'Ativo' : 'Inativo' }}
       </div>
     </div>
   </div>
@@ -55,7 +61,8 @@ export default {
 
   props: {
     id: {
-      type: Number
+      type: Number,
+      required: true
     },
     image_url: {
       type: String,

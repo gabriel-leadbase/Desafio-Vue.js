@@ -1,7 +1,10 @@
 <template>
   <div class="navbar">
     <div class="navbar__logo">
-      <img src="@/assets/images/logo.svg" alt="Logo">
+      <img
+        src="@/assets/images/logo.svg"
+        alt="Logo"
+      >
     </div>
 
     <ul class="menu">
@@ -19,7 +22,7 @@
             class="menu__icon"
             :src="icon"
           >
-          {{label}}
+          {{ label }}
         </RouterLink>
       </li>
     </ul>

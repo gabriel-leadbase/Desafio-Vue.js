@@ -8,7 +8,7 @@
   >
     <div class="modal__header">
       <h1 class="modal__title">
-        {{title}}
+        {{ title }}
       </h1>
       <XIcon
         class="modal__close"

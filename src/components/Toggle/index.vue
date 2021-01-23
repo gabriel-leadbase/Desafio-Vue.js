@@ -2,20 +2,20 @@
   <div
     class="toggle"
   >
-      <slot name="label:before"></slot>
+    <slot name="label:before" />
 
-      <label
-        :class="['toggle__radio', {'toggle__radio--active': status === true}]"
+    <label
+      :class="['toggle__radio', {'toggle__radio--active': status === true}]"
+    >
+      <input
+        v-model="status"
+        type="checkbox"
+        class="toggle__input"
+        @change="$emit('input', status)"
       >
-        <input
-          type="checkbox"
-          class="toggle__input"
-          v-model="status"
-          @change="$emit('input', status)"
-        >
-      </label>
+    </label>
 
-      <slot name="label:after"></slot>
+    <slot name="label:after" />
   </div>
 </template>
 

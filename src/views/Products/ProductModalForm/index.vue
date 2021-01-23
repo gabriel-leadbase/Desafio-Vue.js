@@ -3,34 +3,40 @@
     class="products-form"
     name="ProductModalForm"
     :title="isUpdating ? 'Editar Produto' : 'Novo Produto'"
-    @close="handleModalClose"
+    @close="closeModal"
     v-on="$listeners"
   >
-    <form action="">
+    <form
+      ref="form"
+    >
       <Input
+        v-model="formData.name"
+        required
         name="name"
         label="Titulo / Nome"
-        v-model="formData.name"
       />
 
       <Input
+        v-model="formData.description"
+        required
         name="description"
         label="Descrição"
-        v-model="formData.description"
       />
 
       <Input
+        v-model="formData.price"
+        required
         currency
         name="price"
         label="Preço"
-        v-model="formData.price"
       />
 
       <Input
+        v-model="formData.image_url"
+        required
         name="image_url"
         label="Link da Imagem"
         placeholder="https://cdn.example.com.br/image.png"
-        v-model="formData.image_url"
       />
 
       <div class="form__toggle">
@@ -50,12 +56,14 @@
       <Button
         size="mini"
         type="translucid"
-        @click="handleModalClose"
+        @click="closeModal"
       >
         Cancelar
       </Button>
       <Button
         size="mini"
+        :loading="isLoading"
+        @click="handleFormSubmit(formData)"
       >
         Salvar
       </Button>
@@ -98,21 +106,9 @@ export default {
     }
 
     return {
+      isLoading: false,
       defaultFormData,
       formData: { ...defaultFormData }
-    }
-  },
-
-  watch: {
-    initialData: {
-      deep: true,
-      immediate: true,
-      handler (data) {
-        this.formData = {
-          ...this.initialData,
-          ...data
-        }
-      }
     }
   },
 
@@ -122,8 +118,58 @@ export default {
     }
   },
 
+  watch: {
+    initialData: {
+      deep: true,
+      immediate: true,
+      handler (initialData) {
+        this.formData = {
+          ...this.defaultFormData,
+          ...initialData
+        }
+      }
+    }
+  },
+
   methods: {
-    handleModalClose () {
+    async handleFormSubmit ({ id, name, description, price, image_url, is_active }) {
+      const formData = {
+        id,
+        name,
+        description,
+        price,
+        image_url,
+        is_active
+      }
+
+      try {
+        this.isLoading = true
+
+        const { data: product } = this.isUpdating
+          ? await api.patch(`/products/${formData.id}`, formData)
+          : await api.post('/products', formData)
+
+        this.$notify({
+          type: 'Success',
+          title: 'Produto salvo com sucesso.'
+        })
+
+        this.$emit('save', product)
+      } catch (error) {
+        console.error(error)
+        this.$notify({
+          type: 'error',
+          title: 'Erro ao salvar produto.',
+          text: 'Atualize a página e tente novamente.'
+        })
+      } finally {
+        this.isLoading = false
+
+        this.closeModal()
+      }
+    },
+
+    closeModal () {
       this.$modal.hide('ProductModalForm')
       this.formData = { ...this.defaultFormData }
       this.$emit('close')

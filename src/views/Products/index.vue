@@ -21,9 +21,9 @@
 
     <div class="products__card-list">
       <ProductCard
-        class="products__card"
-        :key="product.id"
         v-for="product in products"
+        :key="product.id"
+        class="products__card"
         v-bind="product"
         @edit="handleProductEdit"
         @delete="handleProductDelete"
@@ -32,10 +32,9 @@
 
     <ProductModalForm
       ref="ProductModalForm"
-      :initialData="selectedProduct"
+      :initial-data="selectedProduct"
       @close="onProductModalFormClose"
     />
-
   </AdminLayout>
 </template>
 
