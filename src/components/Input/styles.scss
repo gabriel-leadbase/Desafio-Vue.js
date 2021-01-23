@@ -1,0 +1,39 @@
+.input {
+  position: relative;
+
+  height: 3.5rem;
+  border-radius: .5rem;
+
+  padding: .5rem 1rem;
+
+  background-color: $color-foreground;
+
+  margin-bottom: 1.125rem;
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-size: .75rem;
+    line-height: .75rem;
+    color: $color-headings;
+  }
+
+  &__text {
+    height: 100%;
+    background: transparent;
+    color: $color-headings;
+  }
+
+  &__error {
+    position: absolute;
+    bottom: -.925rem;
+    width: 100%;
+    font-size: .75rem;
+    color: $color-danger;
+    opacity: .75;
+  }
+}

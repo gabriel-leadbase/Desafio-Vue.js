@@ -1,0 +1,18 @@
+$font-headings: 'Montserrat', sans-serif;
+$font-text: 'Roboto', sans-serif;
+
+$color-text: #717171;
+$color-light-text: #F9F9F9;
+$color-headings: $color-light-text;
+$color-background: #1F1F1F;
+$color-foreground: #262626;
+$color-gradient: linear-gradient(90deg, #00BFFF -2.09%, #47f2fd 101.08%);
+$color-primary: #00EBFF;
+$color-success: #39B100;
+$color-danger: #FF470A;
+
+$screen-sm: 'min-width: 640px';
+$screen-md: 'min-width: 768px';
+$screen-lg: 'min-width: 1024px';
+$screen-xl: 'min-width: 1280px';
+$screen-xxl: 'min-width: 1536px';
