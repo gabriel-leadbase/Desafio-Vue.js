@@ -4,18 +4,27 @@
       <label
         class="input__label"
       >
-        {{label}}
+        {{ label }}
       </label>
-      <component
-        class="input__text"
-        :is="currency ? 'money' : 'input'"
-        :type="type"
-        :value="value"
-        v-bind="$attrs"
-        @input="$emit('input', $event.target.value)"
-      />
+      <!-- if you use component[is=] breaks v-model -->
+      <template v-if="currency">
+        <money
+          v-model="internalValue"
+          class="input__text"
+          :type="type"
+          v-bind="$attrs"
+        />
+      </template>
+      <template v-else>
+        <input
+          v-model="internalValue"
+          class="input__text"
+          :type="type"
+          v-bind="$attrs"
+        >
+      </template>
       <span class="input__error">
-        {{error}}
+        {{ error }}
       </span>
     </div>
   </div>
@@ -24,25 +33,53 @@
 <script>
 export default {
   name: 'Input',
+
   props: {
-    currency: {
-      type: Boolean,
-      default: false
+    value: {
+      type: [String, Number],
+      required: true
     },
+
     label: {
       type: String,
       required: true
     },
+
     type: {
       type: String,
       default: 'text'
     },
+
     error: {
       type: String,
       default: ''
     },
+
+    currency: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  data () {
+    return {
+      internalValue: null
+    }
+  },
+
+  watch: {
     value: {
-      default: ''
+      deep: true,
+      immediate: true,
+      handler (value) {
+        if (this.internalValue !== value) {
+          this.internalValue = value
+        }
+      }
+    },
+
+    internalValue (val) {
+      this.$emit('input', val)
     }
   }
 }
