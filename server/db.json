@@ -1,0 +1,14 @@
+{
+  "users": [],
+  "products": [
+    {
+      "name": "Diazepam",
+      "description": "Lorem ipsum dolor sit amet.",
+      "image_url": "https://www.farmadireta.com.br/imagens/300x300/Medicamento-controlado-generico-comprimidos-farmadireta.png",
+      "is_active": true,
+      "id": 1,
+      "price": 1950.21
+    }
+  ],
+  "sells": []
+}
