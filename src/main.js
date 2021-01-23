@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VModal from 'vue-js-modal'
 import VMoney from 'v-money'
+import VNotifications from 'vue-notification'
 
 import App from './App.vue'
 import router from './router'
@@ -13,6 +14,8 @@ Vue.use(VMoney, {
   precision: 2,
   masked: false
 })
+
+Vue.use(VNotifications)
 
 Vue.use(VModal, {
   componentName: 'VModal'
