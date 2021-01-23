@@ -33,12 +33,15 @@
     <ProductModalForm
       ref="ProductModalForm"
       :initial-data="selectedProduct"
+      @save="handleProductSave"
       @close="onProductModalFormClose"
     />
   </AdminLayout>
 </template>
 
 <script>
+import api from '@/services/api'
+
 import { PlusSquareIcon } from 'vue-feather-icons'
 
 import AdminLayout from '@/components/Layouts/Admin'
@@ -60,28 +63,34 @@ export default {
   data () {
     return {
       selectedProduct: {},
-      products: [
-        {
-          id: 1,
-          name: 'Diazepam',
-          description: 'Lorem ipsum dolor sit amet.',
-          price: 'R$ 19,50',
-          is_active: false,
-          image_url: 'https://www.farmadireta.com.br/imagens/300x300/Medicamento-controlado-generico-comprimidos-farmadireta.png'
-        },
-        {
-          id: 2,
-          name: 'Silvestantina',
-          description: 'Lorem ipsum dolor sit amet.',
-          price: 'R$ 28,50',
-          is_active: true,
-          image_url: 'https://extrafarma.vtexassets.com/arquivos/ids/161309-800-450?width=800&height=450&aspect=true'
-        }
-      ]
+      products: []
     }
   },
 
+  mounted () {
+    this.loadProducts()
+  },
+
   methods: {
+    async loadProducts () {
+      try {
+        this.isLoading = false
+
+        const { data: products } = await api.get('products')
+
+        this.products = products
+      } catch (error) {
+        console.error(error)
+        this.$notify({
+          type: 'error',
+          title: 'Erro ao listar produtos',
+          text: 'Atualize a página e tente novamente.'
+        })
+      } finally {
+        this.isLoading = false
+      }
+    },
+
     handleProductCreate () {
       this.$modal.show('ProductModalForm')
     },
@@ -91,8 +100,51 @@ export default {
       this.$modal.show('ProductModalForm')
     },
 
-    handleProductDelete (product) {
+    async handleProductSave (savedProduct) {
+      console.log(savedProduct)
 
+      const wasSavedBefore = this.products.find(product => product.id === savedProduct.id)
+
+      if (wasSavedBefore) {
+        this.products = this.products.map(
+          product => {
+            const shouldUpdateThisProduct = product.id === savedProduct.id
+
+            if (shouldUpdateThisProduct) {
+              return { ...product, ...savedProduct }
+            }
+
+            return product
+          }
+        )
+      } else {
+        this.products = this.products.concat(savedProduct)
+      }
+    },
+
+    async handleProductDelete ({ id }) {
+      try {
+        this.isLoading = true
+
+        await api.delete(`products/${id}`)
+
+        this.products = this.products.filter(
+          (product) => product.id !== id
+        )
+
+        this.$notify({
+          title: 'Produto excluido com sucesso.'
+        })
+      } catch (error) {
+        console.error(error)
+        this.$notify({
+          type: 'error',
+          title: 'Erro ao excluir produto',
+          text: 'Atualize a página e tente novamente.'
+        })
+      } finally {
+        this.isLoading = false
+      }
     },
 
     onProductModalFormClose () {
