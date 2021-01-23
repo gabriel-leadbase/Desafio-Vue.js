@@ -18,7 +18,7 @@
         {{ description }}
       </p>
       <span class="product-card__price">
-        {{ price }}
+        {{ numberToBRL(price) }}
       </span>
     </div>
 
@@ -42,13 +42,21 @@
         </button>
       </div>
       <div>
-        {{ is_active ? 'Ativo' : 'Inativo' }}
+        <Toggle
+          :value="is_active"
+          @input="(is_active) => handleFormSubmit({ id, is_active })"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import api from '@/services/api'
+
+import Toggle from '@/components/Toggle'
+import numberToBRL from '@/utils/numberToBRL'
+
 import { Edit3Icon, Trash2Icon } from 'vue-feather-icons'
 
 export default {
@@ -56,7 +64,8 @@ export default {
 
   components: {
     Edit3Icon,
-    Trash2Icon
+    Trash2Icon,
+    Toggle
   },
 
   props: {
@@ -77,13 +86,30 @@ export default {
       required: true
     },
     price: {
-      type: String,
+      type: Number,
       required: true
     },
     is_active: {
       type: Boolean,
       required: true
     }
+  },
+
+  methods: {
+    numberToBRL,
+
+    async handleFormSubmit ({ id, is_active }) {
+      try {
+        const { data: product } = api.patch(`/products/${id}`, { is_active })
+
+        this.$notify({ title: `Produto ${is_active ? 'Ativado' : 'Desativado'} com sucesso.` })
+
+        this.$emit('save', product)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
   }
 }
 </script>
