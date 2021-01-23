@@ -1,10 +1,11 @@
 <template>
   <VModal
     class="modal"
+    height="auto"
     :name="name"
     :adaptative="true"
     v-bind="$attrs"
-    height="auto"
+    v-on="$listeners"
   >
     <div class="modal__header">
       <h1 class="modal__title">
