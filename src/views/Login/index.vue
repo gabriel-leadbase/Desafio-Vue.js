@@ -28,14 +28,13 @@
           name="password"
           type="password"
         />
-        <RouterLink
-          to="/home"
+        <Button
           class="login__submit"
+          :loading="isLoading"
+          @click="handleLogin(formData)"
         >
-          <Button>
-            Entrar
-          </Button>
-        </RouterLink>
+          Entrar
+        </Button>
       </form>
     </div>
   </main>
@@ -44,6 +43,7 @@
 <script>
 import Input from '@/components/Input'
 import Button from '@/components/Button'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Login',
@@ -55,14 +55,57 @@ export default {
 
   data () {
     return {
+      isLoading: false,
       formData: {
         email: '',
         password: ''
       }
     }
   },
-  submit () {
 
+  computed: {
+    ...mapGetters({
+      user: 'auth/user'
+    })
+  },
+
+  watch: {
+    user: {
+      deep: true,
+      immediate: true,
+      handler: 'redirectToDashboard'
+    }
+  },
+
+  methods: {
+    redirectToDashboard (user) {
+      const groupRoutes = {
+        admin: '/home',
+        sales: '/sales'
+      }
+
+      if (user) {
+        this.$router.push(
+          groupRoutes[user.permissions.group]
+        )
+      }
+    },
+
+    async handleLogin (formData) {
+      try {
+        this.isLoading = true
+        await this.$store.dispatch('auth/login', formData)
+      } catch (error) {
+        console.error(error)
+        this.$notify({
+          type: 'error',
+          title: 'Não foi possivel fazer login',
+          text: 'Verifique seu email e senha e tente novamente.'
+        })
+      } finally {
+        this.isLoading = false
+      }
+    }
   }
 }
 </script>
