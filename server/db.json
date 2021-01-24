@@ -1,14 +1,568 @@
 {
-  "users": [],
-  "products": [
+  "users": [
     {
-      "name": "Diazepam",
-      "description": "Lorem ipsum dolor sit amet.",
-      "image_url": "https://www.farmadireta.com.br/imagens/300x300/Medicamento-controlado-generico-comprimidos-farmadireta.png",
-      "is_active": true,
       "id": 1,
-      "price": 1950.21
+      "name": "Dallas",
+      "email": "admin@drugsky.com",
+      "permissions": {
+        "group": "admin",
+        "rules": [
+          "statistics:list",
+          "products:list",
+          "products:create",
+          "products:edit",
+          "products:delete"
+        ]
+      },
+      "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000",
+      "created_at": "2021-01-23T22: 50: 19.158Z",
+      "updated_at": "2021-01-23T22: 50: 19.158Z"
+    },
+    {
+      "id": 2,
+      "name": "Der",
+      "email": "seller@drugsky.com",
+      "permissions": {
+        "group": "sales",
+        "rules": [
+          "products:list",
+          "sales:list",
+          "sales:create",
+          "sales:edit"
+        ]
+      },
+      "avatar_url": "http://dummyimage.com/250x250.png/cc0000/ffffff",
+      "created_at": "2021-01-23T22: 50: 19.158Z",
+      "updated_at": "2021-01-23T22: 50: 19.158Z"
+    },
+    {
+      "id": 3,
+      "name": "Doralyn",
+      "email": "doralyn@drugsky.com",
+      "permissions": {
+        "group": "sales",
+        "rules": [
+          "products:list",
+          "sales:list",
+          "sales:create",
+          "sales:edit"
+        ]
+      },
+      "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000",
+      "created_at": "2021-01-23T22: 50: 19.158Z",
+      "updated_at": "2021-01-23T22: 50: 19.158Z"
+    },
+    {
+      "id": 4,
+      "name": "Jada",
+      "email": "jada@drugsky.com",
+      "permissions": {
+        "group": "sales",
+        "rules": [
+          "products:list",
+          "sales:list",
+          "sales:create",
+          "sales:edit"
+        ]
+      },
+      "avatar_url": "http://dummyimage.com/250x250.png/ff4444/ffffff",
+      "created_at": "2021-01-23T22: 50: 19.158Z",
+      "updated_at": "2021-01-23T22: 50: 19.158Z"
+    },
+    {
+      "id": 5,
+      "name": "Kathie",
+      "email": "kathie@drugsky.com",
+      "permissions": {
+        "group": "sales",
+        "rules": [
+          "products:list",
+          "sales:list",
+          "sales:create",
+          "sales:edit"
+        ]
+      },
+      "avatar_url": "http://dummyimage.com/250x250.png/ff4444/ffffff",
+      "created_at": "2021-01-23T22: 50: 19.158Z",
+      "updated_at": "2021-01-23T22: 50: 19.158Z"
     }
   ],
-  "sells": []
+  "products": [
+    {
+      "id": 1,
+      "name": "Oxybenzone",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 69.26,
+      "image_url": "http://dummyimage.com/250x250.png/dddddd/000000",
+      "is_active": true,
+      "created_at": "2020-06-26T18:06:52Z",
+      "updated_at": "2021-01-24T00:15:18.077Z"
+    },
+    {
+      "id": 2,
+      "name": "Albumin (Human)",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 77.21,
+      "image_url": "http://dummyimage.com/250x250.png/5fa2dd/ffffff",
+      "is_active": true,
+      "created_at": "2020-08-28T16:24:59Z",
+      "updated_at": "2021-01-24T00:15:20.944Z"
+    },
+    {
+      "id": 3,
+      "name": "Pecan Pollen",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 76.83,
+      "image_url": "http://dummyimage.com/250x250.png/ff4444/ffffff",
+      "is_active": true,
+      "created_at": "2020-11-10T01:18:42Z",
+      "updated_at": "2021-01-24T01:05:57.562Z"
+    },
+    {
+      "id": 4,
+      "name": "Benzalkonium",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 71.73,
+      "image_url": "http://dummyimage.com/250x250.png/cc0000/ffffff",
+      "is_active": false,
+      "created_at": "2020-04-01T08:05:35Z",
+      "updated_at": "2020-07-08T13:49:57Z"
+    },
+    {
+      "id": 5,
+      "name": "Acetylcarnitine",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 26.59,
+      "image_url": "http://dummyimage.com/250x250.png/dddddd/000000",
+      "is_active": false,
+      "created_at": "2020-01-29T12:02:45Z",
+      "updated_at": "2020-12-11T18:20:03Z"
+    },
+    {
+      "id": 6,
+      "name": "Pantoprazole ",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 97.75,
+      "image_url": "http://dummyimage.com/250x250.png/5fa2dd/ffffff",
+      "is_active": true,
+      "created_at": "2020-02-27T21:40:17Z",
+      "updated_at": "2020-12-13T20:00:56Z"
+    },
+    {
+      "id": 7,
+      "name": "Levonorgestrel",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 45.4,
+      "image_url": "http://dummyimage.com/250x250.png/ff4444/ffffff",
+      "is_active": false,
+      "created_at": "2020-10-28T20:07:32Z",
+      "updated_at": "2020-11-24T00:00:47Z"
+    },
+    {
+      "id": 8,
+      "name": "Salicylate",
+      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+      "price": 92.54,
+      "image_url": "http://dummyimage.com/250x250.png/cc0000/ffffff",
+      "is_active": true,
+      "created_at": "2020-08-12T23:47:18Z",
+      "updated_at": "2020-07-11T22:57:00Z"
+    }
+  ],
+  "sales": [
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 6,
+        "name": "Pantoprazole"
+      },
+      "amount": 11,
+      "is_canceled": false,
+      "total": 2451.46,
+      "created_at": "2021-01-23T05:29:16.729Z",
+      "updated_at": "2021-01-23T05:29:16.729Z"
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 5,
+        "name": "Kathie",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 6,
+        "name": "Pantoprazole"
+      },
+      "amount": 20,
+      "is_canceled": false,
+      "total": 4165.49,
+      "created_at": "2021-01-22T05:29:16.729Z",
+      "updated_at": "2021-01-22T05:29:16.729Z"
+    },
+    {
+      "id": 3,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 2,
+        "name": "Albumin (Human)"
+      },
+      "amount": 11,
+      "is_canceled": false,
+      "total": 1420.07,
+      "created_at": "2021-01-21T05:29:16.729Z",
+      "updated_at": "2021-01-21T05:29:16.729Z"
+    },
+    {
+      "id": 4,
+      "user": {
+        "id": 3,
+        "name": "Doralyn",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 31,
+      "is_canceled": false,
+      "total": 4384.07,
+      "created_at": "2021-01-20T05:29:16.729Z",
+      "updated_at": "2021-01-20T05:29:16.729Z"
+    },
+    {
+      "id": 5,
+      "user": {
+        "id": 4,
+        "name": "Jada",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 31,
+      "is_canceled": false,
+      "total": 3850.52,
+      "created_at": "2021-01-19T05:29:16.729Z",
+      "updated_at": "2021-01-19T05:29:16.729Z"
+    },
+    {
+      "id": 6,
+      "user": {
+        "id": 4,
+        "name": "Jada",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 6,
+        "name": "Pantoprazole"
+      },
+      "amount": 21,
+      "is_canceled": false,
+      "total": 917.8,
+      "created_at": "2021-01-18T05:29:16.729Z",
+      "updated_at": "2021-01-18T05:29:16.729Z"
+    },
+    {
+      "id": 7,
+      "user": {
+        "id": 3,
+        "name": "Doralyn",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 35,
+      "is_canceled": false,
+      "total": 4596.09,
+      "created_at": "2021-01-17T05:29:16.729Z",
+      "updated_at": "2021-01-17T05:29:16.729Z"
+    },
+    {
+      "id": 8,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 4,
+        "name": "Benzalkonium"
+      },
+      "amount": 32,
+      "is_canceled": false,
+      "total": 2940.14,
+      "created_at": "2021-01-21T05:29:16.729Z",
+      "updated_at": "2021-01-21T05:29:16.729Z"
+    },
+    {
+      "id": 9,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 5,
+        "name": "Acetylcarnitine"
+      },
+      "amount": 2,
+      "is_canceled": false,
+      "total": 2366.96,
+      "created_at": "2021-01-22T05:29:16.729Z",
+      "updated_at": "2021-01-22T05:29:16.729Z"
+    },
+    {
+      "id": 10,
+      "user": {
+        "id": 3,
+        "name": "Doralyn",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 2,
+      "is_canceled": false,
+      "total": 3288.39,
+      "created_at": "2021-01-23T05:29:16.729Z",
+      "updated_at": "2021-01-23T05:29:16.729Z"
+    },
+    {
+      "id": 11,
+      "user": {
+        "id": 2,
+        "name": "Der",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 4,
+      "total": 146.95,
+      "is_canceled": true,
+      "created_at": "2021-01-21T05:29:16.729Z",
+      "updated_at": "2021-01-21T05:29:16.729Z"
+    },
+    {
+      "id": 12,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 30,
+      "is_canceled": false,
+      "total": 2095.01,
+      "created_at": "2021-01-25T05:29:16.729Z",
+      "updated_at": "2021-01-25T05:29:16.729Z"
+    },
+    {
+      "id": 13,
+      "user": {
+        "id": 5,
+        "name": "Kathie",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 6,
+        "name": "Pantoprazole"
+      },
+      "amount": 20,
+      "is_canceled": false,
+      "total": 1576.58,
+      "created_at": "2021-01-25T05:29:16.729Z",
+      "updated_at": "2021-01-25T05:29:16.729Z"
+    },
+    {
+      "id": 14,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 7,
+        "name": "Levonorgestrel"
+      },
+      "amount": 8,
+      "is_canceled": false,
+      "total": 4712.32,
+      "created_at": "2021-01-26T05:29:16.729Z",
+      "updated_at": "2021-01-26T05:29:16.729Z"
+    },
+    {
+      "id": 15,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 1,
+        "name": "Dallas"
+      },
+      "amount": 4,
+      "is_canceled": false,
+      "total": 2982.67,
+      "created_at": "2021-01-22T05:29:16.729Z",
+      "updated_at": "2021-01-22T05:29:16.729Z"
+    },
+    {
+      "id": 16,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 7,
+        "name": "Levonorgestrel"
+      },
+      "amount": 1,
+      "is_canceled": false,
+      "total": 1645.91,
+      "created_at": "2021-01-23T05:29:16.729Z",
+      "updated_at": "2021-01-23T05:29:16.729Z"
+    },
+    {
+      "id": 17,
+      "user": {
+        "id": 4,
+        "name": "Jada",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 22,
+      "is_canceled": false,
+      "total": 4265.38,
+      "created_at": "2021-01-23T05:29:16.729Z",
+      "updated_at": "2021-01-23T05:29:16.729Z"
+    },
+    {
+      "id": 18,
+      "user": {
+        "id": 4,
+        "name": "Jada",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen"
+      },
+      "amount": 34,
+      "is_canceled": false,
+      "total": 2340.87,
+      "created_at": "2021-01-24T05:29:16.729Z",
+      "updated_at": "2021-01-24T05:29:16.729Z"
+    },
+    {
+      "id": 19,
+      "user": {
+        "id": 1,
+        "name": "Dallas",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 6,
+        "name": "Pantoprazole"
+      },
+      "amount": 16,
+      "is_canceled": false,
+      "total": 3709.66,
+      "created_at": "2021-01-24T05:29:16.729Z",
+      "updated_at": "2021-01-24T05:29:16.729Z"
+    },
+    {
+      "id": 20,
+      "user": {
+        "id": 3,
+        "name": "Doralyn",
+        "avatar_url": "http://dummyimage.com/250x250.png/dddddd/000000"
+      },
+      "product": {
+        "id": 5,
+        "name": "Acetylcarnitine"
+      },
+      "amount": 4,
+      "is_canceled": false,
+      "total": 397.81,
+      "created_at": "2021-01-24T05:29:16.729Z",
+      "updated_at": "2021-01-24T05:29:16.729Z"
+    },
+    {
+      "amount": "10",
+      "is_canceled": false,
+      "total": 692.6,
+      "product": {
+        "id": 1,
+        "name": "Oxybenzone",
+        "price": 69.26
+      },
+      "user": {
+        "id": 2,
+        "name": "Der",
+        "avatar_url": "http://dummyimage.com/250x250.png/cc0000/ffffff"
+      },
+      "id": 21,
+      "created_at": "2021-01-20T05:29:16.729Z",
+      "updated_at": "2021-01-20T05:29:16.729Z"
+    },
+    {
+      "amount": "58",
+      "is_canceled": false,
+      "total": 4456.14,
+      "product": {
+        "id": 3,
+        "name": "Pecan Pollen",
+        "price": 76.83
+      },
+      "user": {
+        "id": 2,
+        "name": "Der",
+        "avatar_url": "http://dummyimage.com/250x250.png/cc0000/ffffff"
+      },
+      "id": 22,
+      "created_at": "2021-01-20T05:29:16.729Z",
+      "updated_at": "2021-01-20T05:29:16.729Z"
+    },
+    {
+      "amount": "5",
+      "is_canceled": false,
+      "total": 346.3,
+      "product": {
+        "id": 1,
+        "name": "Oxybenzone",
+        "price": 69.26
+      },
+      "user": {
+        "id": 2,
+        "name": "Der",
+        "avatar_url": "http://dummyimage.com/250x250.png/cc0000/ffffff"
+      },
+      "created_at": "2021-01-24T05:39:37.538Z",
+      "updated_at": "2021-01-24T05:39:37.538Z",
+      "id": 23
+    }
+  ]
 }
