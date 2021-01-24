@@ -110,7 +110,7 @@ export default {
         this.$notify({
           type: 'error',
           title: 'Erro ao listar medicamentos',
-          text: 'Atualize a página e tente novamente.'
+          text: 'Atualize a página e tente novamente'
         })
       } finally {
         this.isLoading = false
@@ -157,14 +157,14 @@ export default {
         )
 
         this.$notify({
-          title: 'Medicamento excluido com sucesso.'
+          title: 'Medicamento excluido com sucesso'
         })
       } catch (error) {
         console.error(error)
         this.$notify({
           type: 'error',
           title: 'Erro ao excluir medicamento',
-          text: 'Atualize a página e tente novamente.'
+          text: 'Atualize a página e tente novamente'
         })
       } finally {
         this.isLoading = false

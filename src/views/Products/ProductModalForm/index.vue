@@ -178,7 +178,7 @@ export default {
 
         this.$notify({
           type: 'success',
-          title: 'Medicamento salvo com sucesso.'
+          title: 'Medicamento salvo com sucesso
         })
 
         this.$emit('save', product)
@@ -192,8 +192,8 @@ export default {
 
           this.$notify({
             type: 'error',
-            title: 'Erro ao salvar medicamento.',
-            text: 'Atualize a página e tente novamente.'
+            title: 'Erro ao salvar medicamento',
+            text: 'Atualize a página e tente novamente'
           })
         }
       } finally {

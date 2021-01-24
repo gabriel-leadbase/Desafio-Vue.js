@@ -100,7 +100,7 @@ export default {
         this.$notify({
           type: 'error',
           title: 'Não foi possivel fazer login',
-          text: 'Verifique seu email e senha e tente novamente.'
+          text: 'Verifique seu email e senha e tente novamente'
         })
       } finally {
         this.isLoading = false
