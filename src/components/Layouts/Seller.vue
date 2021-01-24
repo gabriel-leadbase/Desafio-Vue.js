@@ -30,13 +30,13 @@ export default {
     return {
       menu: [
         {
-          label: 'Dashboard',
-          icon: require('@/assets/images/icons/grid.svg'),
-          url: '/home'
+          label: 'Vendas',
+          icon: require('@/assets/images/icons/trending-up.svg'),
+          url: '/sales'
         },
         {
           label: 'Produtos',
-          icon: require('@/assets/images/icons/layers.svg'),
+          icon: require('@/assets/images/icons/grid.svg'),
           url: '/products'
         }
       ]
