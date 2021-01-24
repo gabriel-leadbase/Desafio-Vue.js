@@ -52,9 +52,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.isPrivate)) {
     if (store.getters['auth/isAuthenticated']) {
       const checkUserHasRule = (rule) => {
-        return store.state.auth.user.permissions.rules.find(
-          userRule => userRule === rule
-        )
+        return store.state.auth.user.permissions.rules.includes(rule)
       }
 
       const hasPermissions = to.matched.some(
@@ -62,6 +60,7 @@ router.beforeEach((to, from, next) => {
       )
 
       hasPermissions ? next() : next('/')
+
       return
     }
     console.log('notAuthenticated')
