@@ -16,6 +16,7 @@
   .profile {
     display: flex;
     align-items: center;
+    white-space: nowrap;
 
     &__user {
       color: $color-primary;
