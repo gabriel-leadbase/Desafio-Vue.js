@@ -1,0 +1,68 @@
+
+.title {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  margin-left: .25rem;
+}
+
+.sales {
+  &__stats,
+  &__chart,
+  &__ranking {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.data-cards {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-bottom: solid 1px rgba(#fff, .025);
+
+    @media($screen-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin-bottom: 1rem;
+
+    &--actions {
+      text-align: center;
+      max-width: 8rem;
+      justify-content: flex-end;
+    }
+
+    @media($screen-md) {
+      margin-right: .5rem;
+    }
+  }
+
+  &__label {
+    font-size: .75rem;
+  }
+
+  &__text {
+    color: $color-light-text;
+  }
+
+  &__label,
+  &__text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    white-space: nowrap;
+  }
+}
