@@ -1,11 +1,17 @@
 <template>
-  <AdminLayout class="products">
-    <template #header:action>
+  <component
+    :is="Layout"
+    class="products"
+  >
+    <template
+      v-if="$can('products:create')"
+      #header:action
+    >
       <Button
         type="success"
         @click="handleProductCreate"
       >
-        Novo Produto
+        Novo Medicamento
 
         <template #label:after>
           <PlusSquareIcon
@@ -13,10 +19,17 @@
           />
         </template>
       </Button>
+
+      <ProductModalForm
+        ref="ProductModalForm"
+        :initial-data="selectedProduct"
+        @save="handleProductSave"
+        @close="onProductModalFormClose"
+      />
     </template>
 
     <h1 class="title">
-      Produtos
+      Medicamentos
     </h1>
 
     <div class="products__card-list">
@@ -29,14 +42,7 @@
         @delete="handleProductDelete"
       />
     </div>
-
-    <ProductModalForm
-      ref="ProductModalForm"
-      :initial-data="selectedProduct"
-      @save="handleProductSave"
-      @close="onProductModalFormClose"
-    />
-  </AdminLayout>
+  </component>
 </template>
 
 <script>
@@ -44,7 +50,11 @@ import api from '@/services/api'
 
 import { PlusSquareIcon } from 'vue-feather-icons'
 
+import { mapGetters } from 'vuex'
+
 import AdminLayout from '@/components/Layouts/Admin'
+import SellerLayout from '@/components/Layouts/Seller'
+
 import Button from '@/components/Button'
 import ProductCard from './ProductCard'
 import ProductModalForm from './ProductModalForm'
@@ -56,6 +66,7 @@ export default {
     Button,
     PlusSquareIcon,
     AdminLayout,
+    SellerLayout,
     ProductCard,
     ProductModalForm
   },
@@ -64,6 +75,21 @@ export default {
     return {
       selectedProduct: {},
       products: []
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      user: 'auth/user'
+    }),
+
+    Layout () {
+      const layouts = {
+        admin: AdminLayout,
+        sales: SellerLayout
+      }
+
+      return layouts[this.user.permissions.group]
     }
   },
 
@@ -83,7 +109,7 @@ export default {
         console.error(error)
         this.$notify({
           type: 'error',
-          title: 'Erro ao listar produtos',
+          title: 'Erro ao listar medicamentos',
           text: 'Atualize a página e tente novamente.'
         })
       } finally {
@@ -131,13 +157,13 @@ export default {
         )
 
         this.$notify({
-          title: 'Produto excluido com sucesso.'
+          title: 'Medicamento excluido com sucesso.'
         })
       } catch (error) {
         console.error(error)
         this.$notify({
           type: 'error',
-          title: 'Erro ao excluir produto',
+          title: 'Erro ao excluir medicamento',
           text: 'Atualize a página e tente novamente.'
         })
       } finally {

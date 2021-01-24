@@ -2,7 +2,7 @@
   <Modal
     class="products-form"
     name="ProductModalForm"
-    :title="isUpdating ? 'Editar Produto' : 'Novo Produto'"
+    :title="isUpdating ? 'Editar Medicamento' : 'Novo Medicamento'"
     @close="closeModal"
     v-on="$listeners"
   >
@@ -178,7 +178,7 @@ export default {
 
         this.$notify({
           type: 'success',
-          title: 'Produto salvo com sucesso.'
+          title: 'Medicamento salvo com sucesso.'
         })
 
         this.$emit('save', product)
@@ -192,7 +192,7 @@ export default {
 
           this.$notify({
             type: 'error',
-            title: 'Erro ao salvar produto.',
+            title: 'Erro ao salvar medicamento.',
             text: 'Atualize a página e tente novamente.'
           })
         }

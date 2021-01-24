@@ -35,7 +35,7 @@ export default {
           url: '/home'
         },
         {
-          label: 'Produtos',
+          label: 'Medicamentos',
           icon: require('@/assets/images/icons/layers.svg'),
           url: '/products'
         }

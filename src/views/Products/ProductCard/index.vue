@@ -22,30 +22,37 @@
       </span>
     </div>
 
-    <div class="product-card__footer">
-      <div>
-        <button
-          class="product-card__action"
-          @click="$emit('edit', {...$props, ...$attrs})"
-        >
-          <Edit3Icon
-            size="20"
+    <div
+      v-if="$can('products:create')"
+      class="product-card__footer-container"
+    >
+      <div
+        class="product-card__footer"
+      >
+        <div>
+          <button
+            class="product-card__action"
+            @click="$emit('edit', {...$props, ...$attrs})"
+          >
+            <Edit3Icon
+              size="20"
+            />
+          </button>
+          <button
+            class="product-card__action"
+            @click="$emit('delete', {...$props, ...$attrs})"
+          >
+            <Trash2Icon
+              size="20"
+            />
+          </button>
+        </div>
+        <div>
+          <Toggle
+            :value="is_active"
+            @input="(is_active) => handleFormSubmit({ id, is_active })"
           />
-        </button>
-        <button
-          class="product-card__action"
-          @click="$emit('delete', {...$props, ...$attrs})"
-        >
-          <Trash2Icon
-            size="20"
-          />
-        </button>
-      </div>
-      <div>
-        <Toggle
-          :value="is_active"
-          @input="(is_active) => handleFormSubmit({ id, is_active })"
-        />
+        </div>
       </div>
     </div>
   </div>
@@ -102,7 +109,7 @@ export default {
       try {
         const { data: product } = api.patch(`/products/${id}`, { is_active })
 
-        this.$notify({ title: `Produto ${is_active ? 'Ativado' : 'Desativado'} com sucesso.` })
+        this.$notify({ title: `Medicamento ${is_active ? 'Ativado' : 'Desativado'} com sucesso.` })
 
         this.$emit('save', product)
       } catch (error) {

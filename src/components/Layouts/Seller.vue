@@ -35,7 +35,7 @@ export default {
           url: '/sales'
         },
         {
-          label: 'Produtos',
+          label: 'Medicamentos',
           icon: require('@/assets/images/icons/grid.svg'),
           url: '/products'
         }
