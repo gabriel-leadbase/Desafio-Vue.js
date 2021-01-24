@@ -63,10 +63,8 @@ router.beforeEach((to, from, next) => {
 
       return
     }
-    console.log('notAuthenticated')
     next('/')
   } else {
-    console.log('notPrivate')
     next()
   }
 })
