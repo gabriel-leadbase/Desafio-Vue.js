@@ -3,7 +3,6 @@
     class="modal"
     height="auto"
     :name="name"
-    :adaptative="true"
     v-bind="$attrs"
     v-on="$listeners"
   >

@@ -24,7 +24,12 @@ Vue.use(VMoney, {
 Vue.use(VNotifications)
 
 Vue.use(VModal, {
-  componentName: 'VModal'
+  componentName: 'VModal',
+  dynamicDefault: {
+    adaptive: true,
+    maxWidth: '100%',
+    minWidth: '360px'
+  }
 })
 
 new Vue({
