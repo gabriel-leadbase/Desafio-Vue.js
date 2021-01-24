@@ -101,8 +101,6 @@ export default {
     },
 
     async handleProductSave (savedProduct) {
-      console.log(savedProduct)
-
       const wasSavedBefore = this.products.find(product => product.id === savedProduct.id)
 
       if (wasSavedBefore) {
