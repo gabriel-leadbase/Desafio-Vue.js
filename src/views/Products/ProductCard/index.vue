@@ -109,7 +109,7 @@ export default {
       try {
         const { data: product } = api.patch(`/products/${id}`, { is_active })
 
-        this.$notify({ title: `Medicamento ${is_active ? 'Ativado' : 'Desativado'} com sucesso.` })
+        this.$notify({ title: `Medicamento ${is_active ? 'Ativado' : 'Desativado'} com sucesso` })
 
         this.$emit('save', product)
       } catch (error) {

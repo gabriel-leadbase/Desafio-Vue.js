@@ -178,7 +178,7 @@ export default {
 
         this.$notify({
           type: 'success',
-          title: 'Medicamento salvo com sucesso
+          title: 'Medicamento salvo com sucesso'
         })
 
         this.$emit('save', product)

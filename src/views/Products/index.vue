@@ -104,7 +104,9 @@ export default {
 
         const { data: products } = await api.get('products')
 
-        this.products = products
+        this.products = this.$can('producs:edit')
+          ? products
+          : products.filter(product => product.is_active)
       } catch (error) {
         console.error(error)
         this.$notify({
