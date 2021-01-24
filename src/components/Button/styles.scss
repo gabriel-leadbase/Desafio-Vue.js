@@ -1,0 +1,156 @@
+.button {
+  position: relative;
+  overflow: hidden;
+
+  height: 3rem;
+  border-radius: .5rem;
+  background: $color-gradient;
+
+  transition: background .25s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $color-light-text;
+  text-decoration: none;
+  font-weight: 600;
+
+  & + & {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    opacity: .95;
+  }
+
+  &[disabled] {
+    opacity: 0.85;
+    cursor: not-allowed;
+  }
+
+
+  &--text {
+    padding: 0 1rem;
+    background: transparent;
+    box-shadow: none;
+    color: $color-headings;
+    &:hover {
+      background: transparent;
+      color: $color-headings;
+    }
+  }
+
+  &--success {
+    background: $color-success;
+  }
+
+  &--danger {
+    background: $color-danger;
+  }
+
+  &--translucid {
+    &:hover, & {
+      background: linear-gradient(45deg, #0000002e, #0000001c);
+      color: $color-headings;
+    }
+  }
+
+  &--large {
+    border-radius: 8px;
+    height: 3.5rem;
+
+    .button__text {
+      padding: 0 2.5rem;
+    }
+  }
+
+  &--mini {
+    border-radius: 6px;
+    height: 2.5rem;
+    font-size: .75rem;
+
+    .button__text {
+      padding: 0 1rem;
+    }
+  }
+
+  &__text {
+    padding: 0 1.25rem;
+    white-space: nowrap;
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &--hidden {
+      opacity: 0;
+    }
+
+    .label {
+      height: 100%;
+      top: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: rgba(0, 0, 0, .1);
+
+      svg {
+        margin: 0 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &--before {
+        left: 0;
+      }
+
+      &--after {
+        right: 0;
+      }
+    }
+  }
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    svg {
+      -webkit-animation: loading 1s infinite linear;
+            animation: loading 1s infinite linear;
+    }
+  }
+
+  @-webkit-keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+              transform: rotate(359deg);
+    }
+  }
+
+  @keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+              transform: rotate(359deg);
+    }
+  }
+}

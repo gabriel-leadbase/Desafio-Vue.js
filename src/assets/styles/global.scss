@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@400;600&display=swap');
+
+@import './notifications.scss';
+
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: $font-text;
+    color: $color-text;
+    font-size: 100%;
+    background: $color-background
+  }
+  body, html, #root {
+    width: 100%;
+    height: 100%;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    font-family: $font-headings;
+    color: $color-headings;
+  }
+
+  .text--light {
+    color: $color-text !important;
+  }
+
+  .text--primary {
+    color: $color-primary !important;
+  }
+
+  input {
+    color: inherit;
+    border: 0;
+  }
+
+  select {
+    height: 3.5rem;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    background-color: $color-foreground;
+    margin-bottom: 1.25rem;
+    color: $color-light-text;
+    border: none;
+    width: 100%;
+  }
+
+  button,input {
+    font-size: .875rem;
+  }
+  button {
+    cursor: pointer;
+    font-weight: 500;
+    border: 0;
+  }
+  .list-reset {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  .scrollarea {
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(169, 169, 169, 0.75);
+      border-radius: 2px;
+    }
+  }
