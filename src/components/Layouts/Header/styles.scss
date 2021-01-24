@@ -9,6 +9,10 @@
     padding: 2.5rem;
   }
 
+  &__logout {
+    cursor: pointer;
+  }
+
   .profile {
     display: flex;
     align-items: center;

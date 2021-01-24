@@ -3,12 +3,12 @@
     <div class="profile">
       <Avatar
         class="profile__avatar"
-        src="https://avatars.githubusercontent.com/u/17859531?s=460&u=bb0947e677d6b8810906ab7c7b95ee5c372de31e&v=4"
+        :src="user.avatar_url"
       />
       <p class="profile__info">
-        Bem vindo,
+        Bem vindo(a),
         <br>
-        <span class="profile__user"> Jimmy Bastos </span>
+        <span class="profile__user"> {{ userFirstName }} </span>
       </p>
     </div>
     <div class="">
@@ -16,6 +16,7 @@
         <PowerIcon
           class="header__logout"
           size="20"
+          @click="handleLogout"
         />
       </slot>
     </div>
@@ -27,6 +28,7 @@
 import { PowerIcon } from 'vue-feather-icons'
 
 import Avatar from '@/components/Avatar'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Navbar',
@@ -36,9 +38,20 @@ export default {
     Avatar
   },
 
-  methods: {
-    logout () {
+  computed: {
+    ...mapGetters({
+      user: 'auth/user'
+    }),
 
+    userFirstName () {
+      return this.user.name.split(' ').find(Boolean)
+    }
+  },
+
+  methods: {
+    handleLogout () {
+      this.$store.dispatch('auth/logout')
+      this.$router.push('/')
     }
   }
 }
