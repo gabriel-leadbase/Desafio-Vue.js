@@ -52,7 +52,7 @@ Esta aplicação foi desenolvida com as seguintes tecnologias:
 - ### **Pré-requisitos**
 
   - É **necessário** possuir o **[Node.js](https://nodejs.org/en/)** instalado na máquina
-  - Também, é **preciso** ter um gerenciador de pacotes, se você já tem o Node.js, então o **[Yarn](https://yarnpkg.com/)** já vai estar disponível.
+  - Também, é **preciso** ter um gerenciador de pacotes, se você já tem o Node.js, então o NPM já vai estar disponível, mas aqui vou usar o **[Yarn](https://yarnpkg.com/)**.
 
 1. Faça um clone :
 
@@ -69,7 +69,7 @@ Esta aplicação foi desenolvida com as seguintes tecnologias:
   # Inciciar o servidor de desenvolvimento
   $ yarn serve
 
-  # Inciciar a api
+  # E para inciciar a API
   $ cd server && yarn && yarn start
 ```
 
