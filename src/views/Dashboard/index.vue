@@ -5,42 +5,9 @@
     </h1>
 
     <div class="dashboard__stats">
-      <div class="card">
-        <span class="card__icon">
-          <TrendingUpIcon size="24" />
-        </span>
-
-        <h4 class="card__title">
-          R$ 385,00
-        </h4>
-        <p>
-          Total em vendas
-        </p>
-      </div>
-
-      <div class="card">
-        <span class="card__icon">
-          <ActivityIcon size="24" />
-        </span>
-        <h4 class="card__title">
-          R$ 28,00
-        </h4>
-        <p>
-          Ticket médio
-        </p>
-      </div>
-
-      <div class="card">
-        <span class="card__icon">
-          <PackageIcon size="24" />
-        </span>
-        <h4 class="card__title">
-          12.805
-        </h4>
-        <p class="card__info">
-          Total de unidades venditas
-        </p>
-      </div>
+      <Stats
+        v-bind="totals"
+      />
     </div>
 
     <h1 class="title">
@@ -48,41 +15,8 @@
     </h1>
 
     <div class="dashboard__chart">
-      <Chart
-        :options="{
-          lang: {
-            months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-            shortMonths: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-            weekdays: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-            loading: ['Atualizando...']
-          },
-          chart: {
-            backgroundColor: 'transparent',
-            numberFormatter (currency) {
-              return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(currency)
-            },
-          },
-          title: false,
-          yAxis: {
-            gridLineColor: 'rgba(255, 255, 255, 0.025)',
-            title: false
-          },
-          xAxis: {
-            type: 'datetime',
-          },
-          series: [{
-            name: 'Total em vendas',
-            color: '#00EBFF',
-            data: [
-              [Date.UTC((new Date()).getUTCFullYear(), (new Date()).getUTCMonth(), (new Date()).getUTCDate()),88],
-              [Date.UTC((new Date()).getUTCFullYear(), (new Date()).getUTCMonth(), (new Date()).getUTCDate()+1),89],
-              [Date.UTC((new Date()).getUTCFullYear(), (new Date()).getUTCMonth(), (new Date()).getUTCDate()+2),0],
-              [Date.UTC((new Date()).getUTCFullYear(), (new Date()).getUTCMonth(), (new Date()).getUTCDate()+3),102],
-              [Date.UTC((new Date()).getUTCFullYear(), (new Date()).getUTCMonth(), (new Date()).getUTCDate()+4),114],
-              [Date.UTC((new Date()).getUTCFullYear(), (new Date()).getUTCMonth(), (new Date()).getUTCDate()+5),120]
-            ],
-          }]
-        }"
+      <IncomeChart
+        :sales="sales"
       />
     </div>
 
@@ -92,21 +26,22 @@
 
     <div class="dashboard__ranking">
       <div class="data-cards">
-        <div class="data-cards__item">
+        <div
+          v-for="seller in ranking"
+          :key="seller.user.id"
+          class="data-cards__item"
+        >
           <div class="data-cards__profile">
-            <div class="avatar">
-              <img
-                src="https://avatars.githubusercontent.com/u/17859531?s=460&u=bb0947e677d6b8810906ab7c7b95ee5c372de31e&v=4"
-                alt="Avatar"
-              >
-            </div>
+            <Avatar
+              :src="seller.user.avatar_url"
+            />
 
             <div class="data-cards__cell">
               <span class="data-cards__label">
                 Representante
               </span>
               <span class="data-cards__text">
-                Jimmy Bastos
+                {{ seller.user.name }}
               </span>
             </div>
           </div>
@@ -116,7 +51,7 @@
               Un. vendidas
             </span>
             <span class="data-cards__text">
-              4.323
+              {{ seller.totalItems }}
             </span>
           </div>
 
@@ -125,7 +60,7 @@
               Ticket médio
             </span>
             <span class="data-cards__text">
-              R$ 37,00
+              {{ numberToBRL(seller.averageTicket) }}
             </span>
           </div>
 
@@ -134,54 +69,7 @@
               Total em vendas
             </span>
             <span class="data-cards__text text--primary">
-              R$ 158.000,00
-            </span>
-          </div>
-        </div>
-
-        <div class="data-cards__item">
-          <div class="data-cards__profile">
-            <div class="avatar">
-              <img
-                src="https://avatars.githubusercontent.com/u/17859531?s=460&u=bb0947e677d6b8810906ab7c7b95ee5c372de31e&v=4"
-                alt="Avatar"
-              >
-            </div>
-
-            <div class="data-cards__cell">
-              <span class="data-cards__label">
-                Representante
-              </span>
-              <span class="data-cards__text">
-                Jimmy Bastos
-              </span>
-            </div>
-          </div>
-
-          <div class="data-cards__cell">
-            <span class="data-cards__label">
-              Un. vendidas
-            </span>
-            <span class="data-cards__text">
-              4.323
-            </span>
-          </div>
-
-          <div class="data-cards__cell">
-            <span class="data-cards__label">
-              Ticket médio
-            </span>
-            <span class="data-cards__text">
-              R$ 37,00
-            </span>
-          </div>
-
-          <div class="data-cards__cell">
-            <span class="data-cards__label">
-              Total em vendas
-            </span>
-            <span class="data-cards__text text--primary">
-              R$ 158.000,00
+              {{ numberToBRL(seller.totalValue) }}
             </span>
           </div>
         </div>
@@ -192,20 +80,111 @@
 
 <script>
 import AdminLayout from '@/components/Layouts/Admin'
+import Stats from '@/components/Stats'
+import Avatar from '@/components/Avatar'
 
-import { ActivityIcon, TrendingUpIcon, PackageIcon } from 'vue-feather-icons'
-
-import { Chart } from 'highcharts-vue'
+import IncomeChart from './IncomeChart'
+import api from '@/services/api'
+import numberToBRL from '@/utils/numberToBRL'
 
 export default {
   name: 'Dashboard',
 
   components: {
+    Stats,
     AdminLayout,
-    Chart,
-    ActivityIcon,
-    TrendingUpIcon,
-    PackageIcon
+    IncomeChart,
+    Avatar
+  },
+
+  data () {
+    return {
+      sales: []
+    }
+  },
+
+  computed: {
+    totals () {
+      const defaults = {
+        averageTicket: 0,
+        totalItems: 0,
+        totalValue: 0
+      }
+
+      return this.sales
+        .reduce((totals, sale) => {
+          totals.totalValue += sale.total
+          totals.totalItems += Number(sale.amount)
+          totals.averageTicket = totals.totalValue / totals.totalItems
+
+          return totals
+        }, defaults)
+    },
+
+    ranking () {
+      const defaultRankingData = {
+        averageTicket: 0,
+        totalItems: 0,
+        totalValue: 0
+      }
+
+      const salesGrupedBySeller = this.sales
+        .reduce((ranking, sale) => {
+          const foundSellerRankingIndex = ranking.findIndex(sum => sum.user.id === sale.user.id)
+
+          const rankingData = ranking[foundSellerRankingIndex]
+            ? { ...ranking[foundSellerRankingIndex] }
+            : { ...defaultRankingData }
+
+          rankingData.user = sale.user
+          rankingData.totalValue += sale.total
+          rankingData.totalItems += Number(sale.amount)
+          rankingData.averageTicket = rankingData.totalValue / rankingData.totalItems
+
+          if (foundSellerRankingIndex !== -1) {
+            ranking[foundSellerRankingIndex] = rankingData
+            return ranking
+          } else {
+            return ranking.concat(rankingData)
+          }
+        }, [])
+
+      return salesGrupedBySeller.sort(
+        (sellerA, sellerB) => sellerB.totalValue - sellerA.totalValue
+      )
+    }
+  },
+
+  mounted () {
+    this.loadSales()
+  },
+
+  methods: {
+
+    numberToBRL,
+
+    async loadSales () {
+      try {
+        this.isLoading = true
+
+        const params = {
+          is_canceled: false
+        }
+
+        const { data: sales } = await api.get('sales', { params })
+
+        this.sales = sales
+      } catch (error) {
+        console.error(error)
+        this.$notify({
+          type: 'error',
+          title: 'Erro ao listar vendas',
+          text: 'Atualize a página e tente novamente'
+        })
+      } finally {
+        this.isLoading = false
+      }
+    }
   }
 }
 </script>
