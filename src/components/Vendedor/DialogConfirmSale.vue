@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card style="width: 400px">
     <q-card-section class="bg-secondary text-white">
       <div class="text-h6 ">Incluir Venda</div>
     </q-card-section>
@@ -10,7 +10,7 @@
       <div class="text-subtitle2">Valor:{{ itens.length }}</div>
     </q-card-section>
 
-    <q-card-section style="min-width: 400px; max-height: 40vh" class=" scroll ">
+    <q-card-section style="max-height: 200px" class="scroll">
       <q-list separator>
         <q-item v-for="item in itens" :key="item.name">
           <q-item-section>
@@ -48,9 +48,7 @@ export default {
     }
   },
   data() {
-    return {
-      key: value
-    };
+    return {};
   }
 };
 </script>

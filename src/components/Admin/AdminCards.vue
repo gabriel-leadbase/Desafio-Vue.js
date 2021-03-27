@@ -1,5 +1,9 @@
 <template>
-  <q-card style="max-height: 200px" class="my-card text-black">
+  <q-card
+    @click="handleCardClick(item)"
+    style="max-height: 200px"
+    class="my-card text-black cursor-pointer"
+  >
     <q-card-section>
       <div class="text-h6 ellipsis">{{ item.title }}</div>
     </q-card-section>
@@ -10,7 +14,7 @@
 
     <q-separator dark />
 
-    <q-card-actions class="my-card bg-secondary text-white">
+    <q-card-actions align="right" class=" my-card bg-secondary text-white">
       <q-btn :to="{ path: item.path }" flat>Acessar</q-btn>
     </q-card-actions>
   </q-card>
@@ -35,6 +39,9 @@ export default {
   methods: {
     itemDetails() {
       console.log("detalhe");
+    },
+    handleCardClick(item) {
+      this.$router.push({ path: item.path });
     }
   }
 };

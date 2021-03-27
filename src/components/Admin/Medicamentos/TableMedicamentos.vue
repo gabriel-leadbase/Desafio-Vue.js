@@ -149,12 +149,14 @@ export default {
 
     editItem(payload){
       Object.assign(this.data[this.editedIndex], payload);
+
       this.$q.notify({
           color: "green-4",
           textColor: "white",
           icon: "cloud_done",
           message: "Elemento editado com sucesso"
         });
+        this.showFormEditMedicamento = false
     },
     saveItem(payload){
      this.data.unshift(payload);
@@ -164,14 +166,9 @@ export default {
           icon: "cloud_done",
           message: "Elemento cadastrado com sucesso"
         });
+        this.showFormAddMedicamento = false
     },
-    close() {
-      this.show_dialog = false;
-      setTimeout(() => {
-        this.editedItem = Object.assign({}, this.defaultItem);
-        this.editedIndex = -1;
-      }, 300);
-    },
+
 
   },
   data() {
@@ -188,8 +185,6 @@ export default {
         carbs: 0,
         protein: 0,
         sodium: 0,
-        calcium: "0%",
-        iron: "0%"
       },
       defaultItem: {
         name: "",
@@ -198,8 +193,6 @@ export default {
         carbs: 0,
         protein: 0,
         sodium: 0,
-        calcium: "0%",
-        iron: "0%"
       },
       columns: [
         {
@@ -220,7 +213,7 @@ export default {
         },
         {
           name: "fat",
-          label: "Fat (g)",
+          label: "Peso (g)",
           field: "fat",
           align:"center",
           sortable: true,
@@ -228,23 +221,7 @@ export default {
         },
         { name: "carbs",align:"center", label: "Carbs (g)", field: "carbs" },
         { name: "protein",align:"center", label: "Protein (g)", field: "protein" },
-        { name: "sodium",align:"center", label: "Sodium (mg)", field: "sodium" },
-        {
-          name: "calcium",
-          label: "Calcium (%)",
-          field: "calcium",
-          align:"center",
-          sortable: true,
-          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
-        },
-        {
-          name: "iron",
-          label: "Iron (%)",
-          align:"center",
-          field: "iron",
-          sortable: true,
-          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
-        },
+        { name: "sodium",align:"center", label: "Sódio (mg)", field: "sodium" },
         {
           name: "actions",
           align:"center",

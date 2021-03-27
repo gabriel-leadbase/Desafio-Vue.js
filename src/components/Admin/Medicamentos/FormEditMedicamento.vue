@@ -1,33 +1,61 @@
 <template>
   <q-card>
-    <q-card-section class="bg-secondary text-white">
-      <div class="text-h6">Atualizar Medicamento</div>
-    </q-card-section>
+    <q-form @submit="onSubmit" class="q-gutter-md">
+      <q-card-section class="bg-secondary text-white">
+        <div class="text-h6">Atualizar Medicamento</div>
+      </q-card-section>
 
-    <q-card-section class="q-pt-none">
-      <q-card-section>
+      <q-card-section style="max-height: 300px" class="scroll">
         <div class="row">
-          <q-input v-model="item.name" label="Nome"></q-input>
-          <q-input v-model="item.calories" label="Calorias"></q-input>
-          <q-input v-model="item.fat" label="Peso"></q-input>
-          <q-input v-model="item.carbs" label="Carb"></q-input>
-          <q-input v-model="item.protein" label="Proteina"></q-input>
-          <q-input v-model="item.sodium" label="Sódio"></q-input>
-          <q-input v-model="item.calcium" label="Cálcio"></q-input>
-          <q-input v-model="item.iron" label="Ferro"></q-input>
+          <div class="col-xs-12 col-md-6">
+            <q-input
+              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              v-model="item.name"
+              label="Nome"
+            ></q-input>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input
+              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              v-model="item.calories"
+              label="Calorias"
+            ></q-input>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input
+              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              v-model="item.fat"
+              label="Peso"
+            ></q-input>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input
+              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              v-model="item.carbs"
+              label="Carb"
+            ></q-input>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input
+              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              v-model="item.protein"
+              label="Proteina"
+            ></q-input>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input
+              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              v-model="item.sodium"
+              label="Sódio"
+            ></q-input>
+          </div>
         </div>
       </q-card-section>
-    </q-card-section>
 
-    <q-card-actions align="right">
-      <q-btn
-        @click="editItem()"
-        flat
-        label="Salvar"
-        color="primary"
-        v-close-popup
-      />
-    </q-card-actions>
+      <q-card-actions align="right">
+        <q-btn flat type="submit" label="Salvar" color="primary" />
+      </q-card-actions>
+    </q-form>
   </q-card>
 </template>
 
@@ -42,8 +70,11 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    console.log("props", this.item);
+  },
   methods: {
-    editItem() {
+    onSubmit() {
       this.$emit("editItem", this.item);
     }
   }
