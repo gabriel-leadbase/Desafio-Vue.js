@@ -15,9 +15,9 @@
         <q-space />
         <q-btn
           size="md"
-          v-show="activeSaleButton"
+          :disabled="!activeSaleButton"
           color="primary"
-          label="Relizar venda"
+          label="Realizar venda"
           @click="handleSaleButtonClick"
           no-caps
         ></q-btn>
@@ -56,7 +56,7 @@ export default {
           } Selecionados of ${this.listaMedicamentos.length}`;
     },
     handleSaleButtonClick() {
-      this.dialogSale = true;
+      this.selected.length ? (this.dialogSale = true) : "";
     }
   },
   computed: {

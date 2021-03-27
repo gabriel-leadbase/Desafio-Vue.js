@@ -16,7 +16,11 @@
         color="white"
         text-color="blue"
         unelevated
-        to="/"
+        @click="
+          () => {
+            this.$router.go(-1);
+          }
+        "
         label="Voltar.."
         no-caps
       />

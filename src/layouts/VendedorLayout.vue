@@ -8,7 +8,7 @@
       />
     </q-header>
     <Drawer
-      :itensDRawer="itemsDrawerToolBar"
+      :itensDrawer="itemsDrawerToolBar"
       :setDrawer="setDrawer"
       :drawer="drawer"
     />
@@ -23,8 +23,8 @@
 
 <script>
 import itemsDrawerToolBar from "./data/VendedorDrawerToolBarItens";
-import Drawer from "components/Drawer";
-import ToolBar from "components/ToolBar";
+import Drawer from "./../components/Drawer";
+import ToolBar from "./../components/ToolBar";
 
 export default {
   components: {

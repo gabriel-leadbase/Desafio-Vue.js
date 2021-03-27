@@ -1,36 +1,28 @@
 <template>
-  <q-drawer v-model="drawerState" :width="200" :breakpoint="500">
+  <q-drawer
+    content-class="bg-teal-5 text-white"
+    v-model="drawerState"
+    :width="200"
+    :breakpoint="500"
+  >
     <q-scroll-area class="fit">
       <q-list padding class="menu-list">
-        <q-item clickable v-ripple>
+        <q-item
+          :to="{ path: item.toPath }"
+          v-for="item in itensDrawer"
+          :key="item.id"
+          clickable
+          v-ripple
+        >
           <q-item-section avatar>
             <q-icon name="inbox" />
           </q-item-section>
 
           <q-item-section>
-            Inbox
+            {{ item.label }}
           </q-item-section>
         </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="send" />
-          </q-item-section>
-
-          <q-item-section>
-            Hoje
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="drafts" />
-          </q-item-section>
-
-          <q-item-section>
-            Seguindo
-          </q-item-section>
-        </q-item>
+        <q-separator />
       </q-list>
     </q-scroll-area>
   </q-drawer>
@@ -43,6 +35,7 @@ export default {
       type: Boolean,
       default: false
     },
+    itensDrawer: Array,
     setDrawer: Function
   },
   data() {

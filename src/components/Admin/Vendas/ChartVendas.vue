@@ -17,8 +17,6 @@ export default {
             name: 'vendas',
             data: [2, 3, 4, 10, 4, 30, 32, 23, 14, 8, 5, 15, 0, 3, 0, 10, 4, 30, 32, 23, 14, 8, 5, 15,]
           }],
-
-
           chartOptions: {
             chart: {
               height: 350,

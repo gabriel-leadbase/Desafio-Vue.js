@@ -1,5 +1,5 @@
 <template>
-  <q-toolbar class="bg-secondary text-white ">
+  <q-toolbar style="height:65px" class="bg-secondary text-white ">
     <q-btn
       v-if="smallWindowSize"
       flat
@@ -21,7 +21,7 @@
     <q-space></q-space>
 
     <q-input
-      style="width: 300px; height:65px"
+      style="width: 300px;"
       outlined
       borderless
       dense
@@ -29,7 +29,7 @@
       standout
       v-model="text"
       input-class="text-right"
-      class="q-ml-md"
+      class="q-ml-md pa-m"
     >
       <template v-slot:append>
         <q-icon v-if="text === ''" name="search" />

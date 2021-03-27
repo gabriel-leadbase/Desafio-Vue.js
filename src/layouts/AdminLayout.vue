@@ -8,7 +8,11 @@
         :drawer="drawer"
       />
     </q-header>
-    <Drawer :setDrawer="setDrawer" :drawer="drawer" />
+    <Drawer
+      :itensDrawer="itemsDrawerToolBar"
+      :setDrawer="setDrawer"
+      :drawer="drawer"
+    />
     <q-page-container>
       <q-page>
         <!-- here we render the pages in pages folder -->
@@ -20,8 +24,8 @@
 
 <script>
 import itemsDrawerToolBar from "./data/AdminDrawerToolBarItens";
-import Drawer from "components/Drawer";
-import ToolBar from "components/ToolBar";
+import Drawer from "./../components/Drawer";
+import ToolBar from "./../components/ToolBar";
 
 export default {
   components: {

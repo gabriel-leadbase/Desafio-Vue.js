@@ -1,3 +1,5 @@
+import { getToken, setToken } from "./../../services/token.service";
+
 const auth_login_request = ({ commit }, payload) => {
   console.log("action auth_login_request", payload);
   return new Promise((resolve, reject) => {
@@ -9,6 +11,7 @@ const auth_login_request = ({ commit }, payload) => {
         name: "Administrador"
       };
       commit("auth_login_request", "finish");
+      setToken(token);
       commit("auth_success", { user, token });
       resolve("Administrador");
     }
