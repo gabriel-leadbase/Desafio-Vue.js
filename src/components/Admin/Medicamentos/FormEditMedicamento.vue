@@ -9,49 +9,49 @@
         <div class="row">
           <div class="col-xs-12 col-md-6">
             <q-input
-              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              :rules="inputRules"
               v-model="item.name"
               label="Nome"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
-              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              :rules="inputRules"
               v-model="item.price"
-              label="Calorias"
+              label="Preço"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
-              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              :rules="inputRules"
               v-model="item.calories"
               label="Calorias"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
-              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              :rules="inputRules"
               v-model="item.fat"
               label="Peso"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
-              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              :rules="inputRules"
               v-model="item.carbs"
               label="Carb"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
-              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              :rules="inputRules"
               v-model="item.protein"
               label="Proteina"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
-              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              :rules="inputRules"
               v-model="item.sodium"
               label="Sódio"
             ></q-input>
@@ -75,7 +75,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      inputRules: [val => (val !== null && val !== "") || "campo obrigatório"]
+    };
   },
   mounted() {
     console.log("props", this.item);

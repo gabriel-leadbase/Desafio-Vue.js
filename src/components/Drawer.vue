@@ -1,8 +1,9 @@
 <template>
   <q-drawer
-    content-class="bg-teal-5 text-white"
+    content-class="bg-secondary text-white"
     v-model="drawerState"
     :width="200"
+    elevated
     :breakpoint="500"
   >
     <q-scroll-area class="fit">
@@ -67,4 +68,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="sass" scoped>
+.menu-list .q-item
+  border-radius: 0 32px 32px 0
+</style>

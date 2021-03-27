@@ -1,4 +1,4 @@
-const TokenKey = "desafio.golfarma";
+const TokenKey = "token.golfarma";
 
 export function getToken() {
   return localStorage.getItem(TokenKey);

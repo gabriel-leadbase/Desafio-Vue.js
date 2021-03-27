@@ -10,5 +10,6 @@ export function auth_login_request(state, payload) {
 }
 export function logout(state) {
   state.status = "";
+  state.user = "";
   state.token = "";
 }

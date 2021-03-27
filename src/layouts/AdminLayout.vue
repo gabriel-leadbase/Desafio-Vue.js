@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout>
     <q-header elevated class="bg-black">
       <ToolBar
         :itensToolBar="itemsDrawerToolBar"

@@ -2,12 +2,10 @@ import AdminLayout from "./../../../../src/layouts/AdminLayout";
 import Drawer from "./../../../../src/components/Drawer";
 import ToolBar from "./../../../../src/components/ToolBar"; // <= note the absence of `.vue` extension, here we are importing the JS/TS part of a Double File Component
 import { createLocalVue, shallowMount } from "@vue/test-utils";
-import Vuex from "vuex";
 import Quasar, * as All from "quasar";
 
 const localVue = createLocalVue();
 
-localVue.use(Vuex);
 const components = Object.keys(All).reduce((object, key) => {
   const val = All[key];
   if (val && val.component && val.component.name != null) {

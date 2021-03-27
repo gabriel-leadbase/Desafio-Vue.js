@@ -38,11 +38,12 @@
     </q-input>
 
     <q-btn dark flat round dense icon="chat" class="q-mr-xs" />
-    <q-btn :to="{ path: '/login' }" flat round dense icon="logout" />
+    <q-btn @click="handleClickLogout" flat round dense icon="logout" />
   </q-toolbar>
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   props: {
     drawer: {
@@ -64,6 +65,15 @@ export default {
   },
   mounted() {},
   methods: {
+    ...mapActions("auth", ["auth_logout"]),
+
+    handleClickLogout() {
+      this.auth_logout()
+        .then(rsp => {
+          this.$router.push({ path: "/" });
+        })
+        .catch(rsp => {});
+    },
     changeDrawer() {
       this.setDrawer(!this.drawer);
     }

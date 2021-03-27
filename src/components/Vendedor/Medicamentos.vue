@@ -34,7 +34,7 @@
           </template>
         </q-input>
         <q-dialog v-model="dialogSale">
-          <dialog-confirm-sale :itens="selected" />
+          <dialog-confirm-sale @finishSell="finishSell" :itens="selected" />
         </q-dialog>
       </template>
     </q-table>
@@ -54,6 +54,15 @@ export default {
         : `${this.selected.length} itens ${
             this.selected.length > 1 ? "s" : ""
           } Selecionados of ${this.listaMedicamentos.length}`;
+    },
+    finishSell(payload) {
+      this.$q.notify({
+        color: "green-4",
+        textColor: "white",
+        icon: "cloud_done",
+        message: "Venda realizada com sucesso !!"
+      });
+      this.selected = [];
     },
     handleSaleButtonClick() {
       this.selected.length ? (this.dialogSale = true) : "";
