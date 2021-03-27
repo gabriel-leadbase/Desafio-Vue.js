@@ -7,7 +7,7 @@
     <q-separator />
     <q-card-section>
       <div class="text-subtitle2">Quntidade escolhida:{{ itens.length }}</div>
-      <div class="text-subtitle2">Valor:{{ itens.length }}</div>
+      <div class="text-subtitle2">Valor: {{ totalValuePrices }}</div>
     </q-card-section>
 
     <q-card-section style="max-height: 200px" class="scroll">
@@ -16,7 +16,7 @@
           <q-item-section>
             <q-item-label>{{ item.name }}</q-item-label>
             <q-item-label caption
-              >R$: {{ item.calories }} Qtd: {{ item.calories }}</q-item-label
+              >R$: {{ item.price }} Qtd: {{ item.calories }}</q-item-label
             >
           </q-item-section>
           <q-item-section side top>
@@ -40,6 +40,13 @@ export default {
   props: {
     itens: {
       type: Array
+    }
+  },
+  computed: {
+    totalValuePrices() {
+      return this.itens.reduce(function(total, item) {
+        return total + item.calories;
+      }, 0);
     }
   },
   methods: {

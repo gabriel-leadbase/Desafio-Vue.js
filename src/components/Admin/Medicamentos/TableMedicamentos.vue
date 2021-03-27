@@ -3,7 +3,7 @@
 
     <q-table
        title="Treats"
-      :data="data"
+      :data="listaMedicamentos"
       :columns="columns"
       :filter="filter"
       row-key="name"
@@ -42,11 +42,22 @@
 
       <template v-slot:body="props">
         <q-tr :props="props">
-          <q-td key="desc" :props="props">
+          <q-td key="name" :props="props">
             {{ props.row.name }}
             <q-popup-edit v-model="props.row.name">
               <q-input
                 v-model="props.row.name"
+                dense
+                autofocus
+                counter
+              ></q-input>
+            </q-popup-edit>
+          </q-td>
+          <q-td key="price" :props="props">
+            {{ props.row.price }}
+            <q-popup-edit v-model="props.row.price">
+              <q-input
+                v-model="props.row.price"
                 dense
                 autofocus
                 counter
@@ -123,6 +134,7 @@
 <script>
 import FormAddMedicamento from "./FormAddMedicamento";
 import FormEditMedicamento from "./FormEditMedicamento";
+import listaMedicamentos from "./../../data/listaMedicamentos";
 export default {
   components: {
         FormAddMedicamento,
@@ -131,9 +143,9 @@ export default {
   methods: {
 
     deleteItem(item) {
-      const index = this.data.indexOf(item);
+      const index = this.listaMedicamentos.indexOf(item);
       confirm("deseja realmente deletar este item?") &&
-        this.data.splice(index, 1) && this.$q.notify({
+        this.listaMedicamentos.splice(index, 1) && this.$q.notify({
           color: "green-4",
           textColor: "white",
           icon: "cloud_done",
@@ -142,13 +154,13 @@ export default {
     },
 
     showFormEditItem(item) {
-      this.editedIndex = this.data.indexOf(item);
+      this.editedIndex = this.listaMedicamentos.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.showFormEditMedicamento = true
     },
 
     editItem(payload){
-      Object.assign(this.data[this.editedIndex], payload);
+      Object.assign(this.listaMedicamentos[this.editedIndex], payload);
 
       this.$q.notify({
           color: "green-4",
@@ -159,7 +171,7 @@ export default {
         this.showFormEditMedicamento = false
     },
     saveItem(payload){
-     this.data.unshift(payload);
+     this.listaMedicamentos.unshift(payload);
      this.$q.notify({
           color: "green-4",
           textColor: "white",
@@ -174,6 +186,7 @@ export default {
   data() {
     return {
       filter: '',
+      listaMedicamentos:listaMedicamentos,
       show_dialog: false,
       showFormAddMedicamento:false,
       showFormEditMedicamento:false,
@@ -196,11 +209,20 @@ export default {
       },
       columns: [
         {
-          name: "desc",
+          name: "name",
           required: true,
           label: "Medicamento (100g serving)",
-          align: "left",
+          align: "center",
           field: row => row.name,
+          format: val => `${val}`,
+          sortable: true
+        },
+         {
+          name: "price",
+          required: true,
+          label: "Preço (R$)",
+          align: "center",
+          field: row => row.price,
           format: val => `${val}`,
           sortable: true
         },
@@ -229,108 +251,6 @@ export default {
           field: "actions"
         }
       ],
-      data: [
-        {
-          name: "Aspirina",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: "14%",
-          iron: "1%"
-        },
-        {
-          name: "Endomecatina",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          sodium: 129,
-          calcium: "8%",
-          iron: "1%"
-        },
-        {
-          name: "Acetaminofeno",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          sodium: 337,
-          calcium: "6%",
-          iron: "7%"
-        },
-        {
-          name: "Diclofenaco",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          sodium: 413,
-          calcium: "3%",
-          iron: "8%"
-        },
-        {
-          name: "Meloxica",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          sodium: 327,
-          calcium: "7%",
-          iron: "16%"
-        },
-        {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          sodium: 50,
-          calcium: "0%",
-          iron: "0%"
-        },
-        {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          sodium: 38,
-          calcium: "0%",
-          iron: "2%"
-        },
-        {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          sodium: 562,
-          calcium: "0%",
-          iron: "45%"
-        },
-        {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          sodium: 326,
-          calcium: "2%",
-          iron: "22%"
-        },
-        {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          sodium: 54,
-          calcium: "12%",
-          iron: "6%"
-        }
-      ]
     };
   }
 };

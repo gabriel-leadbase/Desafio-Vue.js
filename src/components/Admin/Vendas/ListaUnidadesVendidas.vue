@@ -26,7 +26,7 @@ export default {
       loading: true,
       columns: [
         {
-          name: "nome",
+          name: "name",
           required: true,
           label: "Nome do medicamento",
           align: "left",

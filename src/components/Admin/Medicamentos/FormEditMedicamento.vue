@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card style="width: 350px">
     <q-form @submit="onSubmit" class="q-gutter-md">
       <q-card-section class="bg-secondary text-white">
         <div class="text-h6">Atualizar Medicamento</div>
@@ -12,6 +12,13 @@
               :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
               v-model="item.name"
               label="Nome"
+            ></q-input>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input
+              :rules="[val => (val && val.length > 0) || 'campo obrigatório']"
+              v-model="item.price"
+              label="Calorias"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
