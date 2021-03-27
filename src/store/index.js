@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
 // we first import the module
-import auth from './auth'
+import auth from "./auth";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
-export default function (/* { ssrContext } */) {
+export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       // then we reference it
@@ -16,7 +16,7 @@ export default function (/* { ssrContext } */) {
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV
-  })
+  });
 
   /*
     if we want some HMR magic for it, we handle
@@ -26,12 +26,11 @@ export default function (/* { ssrContext } */) {
   */
 
   if (process.env.DEV && module.hot) {
-    module.hot.accept(['./auth'], () => {
-      const newAuth = require('./auth').default
-      Store.hotUpdate({ modules: { auth: newAuth } })
-    })
+    module.hot.accept(["./auth"], () => {
+      const newAuth = require("./auth").default;
+      Store.hotUpdate({ modules: { auth: newAuth } });
+    });
   }
 
-  return Store
-
+  return Store;
 }

@@ -1,5 +1,11 @@
-export default function () {
+export default function() {
   return {
-    count: 0
-  }
+    token: "",
+    user: {
+      name: "",
+      email: ""
+    },
+    loginStatus: "",
+    roles: []
+  };
 }

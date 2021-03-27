@@ -37,7 +37,7 @@
     </q-input>
 
     <q-btn dark flat round dense icon="chat" class="q-mr-xs" />
-    <q-btn flat round dense icon="logout" />
+    <q-btn :to="{ path: '/login' }" flat round dense icon="logout" />
   </q-toolbar>
 </template>
 

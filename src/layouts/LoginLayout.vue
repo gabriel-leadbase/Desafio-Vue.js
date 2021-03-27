@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar style="height:65px" class="bg-secondary text-white  ">
         <q-toolbar-title>
           Login
         </q-toolbar-title>
