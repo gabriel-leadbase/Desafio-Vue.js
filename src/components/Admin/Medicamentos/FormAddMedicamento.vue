@@ -1,7 +1,7 @@
 <template>
   <q-card>
-    <q-card-section>
-      <div class="text-h6">Cadastrar Medicamento</div>
+    <q-card-section class="bg-secondary  text-white">
+      <div class="text-h6 ">Cadastrar Medicamento</div>
     </q-card-section>
 
     <q-card-section class="q-pt-none">

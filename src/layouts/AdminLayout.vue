@@ -1,7 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="bg-black">
-      <ToolBar toPath="/admin" :setDrawer="setDrawer" :drawer="drawer" />
+      <ToolBar
+        :itensToolBar="itemsDrawerToolBar"
+        toPath="/admin"
+        :setDrawer="setDrawer"
+        :drawer="drawer"
+      />
     </q-header>
     <Drawer :setDrawer="setDrawer" :drawer="drawer" />
     <q-page-container>
@@ -14,6 +19,7 @@
 </template>
 
 <script>
+import itemsDrawerToolBar from "./data/AdminDrawerToolBarItens";
 import Drawer from "components/Drawer";
 import ToolBar from "components/ToolBar";
 
@@ -27,7 +33,8 @@ export default {
     return {
       text: "",
       drawer: false,
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      itemsDrawerToolBar: itemsDrawerToolBar
     };
   },
   methods: {

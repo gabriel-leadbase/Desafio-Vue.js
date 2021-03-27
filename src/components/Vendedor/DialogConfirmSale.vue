@@ -1,17 +1,26 @@
 <template>
   <q-card>
     <q-card-section class="bg-secondary text-white">
-      <div class="text-h6 ">Incluir venda</div>
+      <div class="text-h6 ">Incluir Venda</div>
     </q-card-section>
 
     <q-separator />
+    <q-card-section>
+      <div class="text-subtitle2">Quntidade escolhida:{{ itens.length }}</div>
+      <div class="text-subtitle2">Valor:{{ itens.length }}</div>
+    </q-card-section>
 
-    <q-card-section style="min-width: 400px; max-height: 50vh" class="scroll">
+    <q-card-section style="min-width: 400px; max-height: 40vh" class=" scroll ">
       <q-list separator>
-        <q-item v-for="item in itens" :key="item.name" clickable v-ripple>
+        <q-item v-for="item in itens" :key="item.name">
           <q-item-section>
             <q-item-label>{{ item.name }}</q-item-label>
-            <q-item-label caption>R$: {{ item.calories }}</q-item-label>
+            <q-item-label caption
+              >R$: {{ item.calories }} Qtd: {{ item.calories }}</q-item-label
+            >
+          </q-item-section>
+          <q-item-section side top>
+            <q-btn @click="plusItem(item)" round dense flat icon="add" />
           </q-item-section>
         </q-item>
       </q-list>
@@ -32,6 +41,16 @@ export default {
     itens: {
       type: Array
     }
+  },
+  methods: {
+    plusItem(item) {
+      console.log("plusItem", item);
+    }
+  },
+  data() {
+    return {
+      key: value
+    };
   }
 };
 </script>

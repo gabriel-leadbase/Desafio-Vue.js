@@ -19,11 +19,12 @@
           no-caps
         ></q-btn>
         <q-space />
-        <q-input label="buscar medicamento" dense debounce="300" color="primary" v-model="filter">
+        <q-input class="q-pr-lg" label="buscar medicamento" dense debounce="300" color="primary" v-model="filter">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
+
 
         <div class="q-pa-sm q-gutter-sm">
           <q-dialog v-model="showFormAddMedicamento">
@@ -132,9 +133,7 @@ export default {
     deleteItem(item) {
       const index = this.data.indexOf(item);
       confirm("deseja realmente deletar este item?") &&
-        this.data.splice(index, 1);
-
-      this.$q.notify({
+        this.data.splice(index, 1) && this.$q.notify({
           color: "green-4",
           textColor: "white",
           icon: "cloud_done",

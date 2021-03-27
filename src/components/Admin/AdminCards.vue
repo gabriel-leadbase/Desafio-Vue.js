@@ -1,5 +1,5 @@
 <template>
-  <q-card style="max-height: 200px" class="my-card bg-secondary text-white">
+  <q-card style="max-height: 200px" class="my-card text-black">
     <q-card-section>
       <div class="text-h6 ellipsis">{{ item.title }}</div>
     </q-card-section>
@@ -10,7 +10,7 @@
 
     <q-separator dark />
 
-    <q-card-actions>
+    <q-card-actions class="my-card bg-secondary text-white">
       <q-btn :to="{ path: item.path }" flat>Acessar</q-btn>
     </q-card-actions>
   </q-card>

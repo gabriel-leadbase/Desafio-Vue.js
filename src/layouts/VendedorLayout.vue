@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import itemsDrawerToolBar from "./data/VendedordrawerToolBarItens";
+import itemsDrawerToolBar from "./data/VendedorDrawerToolBarItens";
 import Drawer from "components/Drawer";
 import ToolBar from "components/ToolBar";
 

@@ -12,6 +12,7 @@
       v-for="item in itensToolBar"
       :key="item.id"
       v-if="!smallWindowSize"
+      stretch
       :to="{ path: item.toPath }"
       class="q-mr-sm"
       flat

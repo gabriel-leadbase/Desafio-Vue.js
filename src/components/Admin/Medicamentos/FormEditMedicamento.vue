@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-card-section>
+    <q-card-section class="bg-secondary text-white">
       <div class="text-h6">Atualizar Medicamento</div>
     </q-card-section>
 
