@@ -9,19 +9,14 @@
       icon="menu"
     />
     <q-btn
+      v-for="item in itensToolBar"
+      :key="item.id"
       v-if="!smallWindowSize"
-      :to="{ path: InitialPagetoPath }"
+      :to="{ path: item.toPath }"
       class="q-mr-sm"
       flat
-      label="Página inicial"
+      :label="item.label"
     />
-    <q-btn
-      v-if="!smallWindowSize"
-      class="q-mr-sm"
-      flat
-      label="Tabelas Vendedor"
-    />
-    <q-btn v-if="!smallWindowSize" class="q-mr-sm" flat label="Seguindo" />
     <q-space></q-space>
 
     <q-input
@@ -53,7 +48,7 @@ export default {
       type: Boolean,
       default: false
     },
-    InitialPagetoPath: String,
+    itensToolBar: Array,
     setDrawer: Function
   },
   data() {

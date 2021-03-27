@@ -19,7 +19,7 @@
           no-caps
         ></q-btn>
         <q-space />
-        <q-input label="filtrar medicamento" dense debounce="300" color="primary" v-model="filter">
+        <q-input label="buscar medicamento" dense debounce="300" color="primary" v-model="filter">
           <template v-slot:append>
             <q-icon name="search" />
           </template>

@@ -2,12 +2,16 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="bg-black">
       <ToolBar
-        InitialPagetoPath="/vendedor"
+        :itensToolBar="itemsDrawerToolBar"
         :setDrawer="setDrawer"
         :drawer="drawer"
       />
     </q-header>
-    <Drawer :setDrawer="setDrawer" :drawer="drawer" />
+    <Drawer
+      :itensDRawer="itemsDrawerToolBar"
+      :setDrawer="setDrawer"
+      :drawer="drawer"
+    />
     <q-page-container>
       <q-page>
         <!-- here we render the pages in pages folder -->
@@ -18,6 +22,7 @@
 </template>
 
 <script>
+import itemsDrawerToolBar from "./data/VendedordrawerToolBarItens";
 import Drawer from "components/Drawer";
 import ToolBar from "components/ToolBar";
 
@@ -31,6 +36,7 @@ export default {
     return {
       text: "",
       drawer: false,
+      itemsDrawerToolBar: itemsDrawerToolBar,
       leftDrawerOpen: false
     };
   },

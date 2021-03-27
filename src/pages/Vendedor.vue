@@ -1,14 +1,17 @@
 <template>
   <q-page class="flex-center">
-    <div class="q-pa-md row">
-      Vendedor
+    <div class="q-pa-lg col-xs-12 col-sm-4 col-md-3 col-lg-3">
+      <medicamentos />
     </div>
   </q-page>
 </template>
 
 <script>
+import Medicamentos from "./../components/Vendedor/Medicamentos";
 export default {
-  components: {},
+  components: {
+    Medicamentos
+  },
   name: "PageIndex",
   data() {
     return {
