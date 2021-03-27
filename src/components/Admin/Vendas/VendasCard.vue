@@ -11,8 +11,6 @@
     <q-card-section>
       <div class="ellipsis">{{ item.content }}</div>
     </q-card-section>
-
-    <q-separator dark />
   </q-card>
 </template>
 

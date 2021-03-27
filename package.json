@@ -2,7 +2,7 @@
   "name": "my-first-quasar-app",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Todo list Quasar",
+  "productName": "Desafio-Vuejs",
   "author": "elvishuges <elvishuges@hotmail.com>",
   "private": true,
   "scripts": {

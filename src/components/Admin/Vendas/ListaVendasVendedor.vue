@@ -3,7 +3,7 @@
     <template>
       <div class="q-pa-md">
         <q-table
-          title="Unidades vendidas"
+          title="Vendas por vendedor"
           :data="data"
           :loading="loading"
           :columns="columns"
@@ -28,7 +28,7 @@ export default {
         {
           name: "nome",
           required: true,
-          label: "Nome do medicamento",
+          label: "Nome do vendedor",
           align: "left",
           field: row => row.name,
           format: val => `${val}`,
@@ -38,35 +38,29 @@ export default {
           headerClasses: "bg-primary text-white"
         },
         {
-          name: "quantidade",
+          name: "valor",
           align: "center",
-          label: "Quantidade vendida",
+          label: "Valor total",
           field: "calories",
           sortable: true
         },
         {
-          name: "valor",
-          label: "Valor/Unidade (R$)",
+          name: "ticket",
+          label: "Ticket médio",
           field: "fat",
           align: "center",
           sortable: true
         },
         {
-          name: "quantidadeEstoqeu",
-          label: "Quantidade em estoque",
+          name: "unidades",
+          label: "Unidades vendidas",
           align: "center",
           field: "carbs"
-        },
-        {
-          name: "total",
-          label: "Total Vendido (R$)",
-          field: row => row.calories * row.fat,
-          align: "center"
         }
       ],
       data: [
         {
-          name: "Aspirina",
+          name: "Fulano de Tal",
           calories: 159,
           fat: 6.0,
           carbs: 24,
@@ -76,7 +70,7 @@ export default {
           iron: "1%"
         },
         {
-          name: "Anador",
+          name: "José de Tal",
           calories: 237,
           fat: 9.0,
           carbs: 37,
@@ -86,7 +80,7 @@ export default {
           iron: "1%"
         },
         {
-          name: "Dipirona",
+          name: "Beltrano Fulano",
           calories: 262,
           fat: 16.0,
           carbs: 23,
@@ -96,7 +90,7 @@ export default {
           iron: "7%"
         },
         {
-          name: "Mertiolate",
+          name: "Maria Farmácia",
           calories: 305,
           fat: 3.7,
           carbs: 67,
@@ -106,7 +100,7 @@ export default {
           iron: "8%"
         },
         {
-          name: "Acetaminofeno",
+          name: "Elvis Huges",
           calories: 356,
           fat: 16.0,
           carbs: 49,
@@ -114,56 +108,6 @@ export default {
           sodium: 327,
           calcium: "7%",
           iron: "16%"
-        },
-        {
-          name: "Diclofenaco",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          sodium: 50,
-          calcium: "0%",
-          iron: "0%"
-        },
-        {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          sodium: 38,
-          calcium: "0%",
-          iron: "2%"
-        },
-        {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          sodium: 562,
-          calcium: "0%",
-          iron: "45%"
-        },
-        {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          sodium: 326,
-          calcium: "2%",
-          iron: "22%"
-        },
-        {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          sodium: 54,
-          calcium: "12%",
-          iron: "6%"
         }
       ]
     };

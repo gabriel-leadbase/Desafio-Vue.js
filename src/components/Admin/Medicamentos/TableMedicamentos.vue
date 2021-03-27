@@ -208,7 +208,7 @@ export default {
         {
           name: "desc",
           required: true,
-          label: "Dessert (100g serving)",
+          label: "Medicamento (100g serving)",
           align: "left",
           field: row => row.name,
           format: val => `${val}`,
@@ -257,7 +257,7 @@ export default {
       ],
       data: [
         {
-          name: "Frozen Yogurt",
+          name: "Aspirina",
           calories: 159,
           fat: 6.0,
           carbs: 24,
@@ -267,7 +267,7 @@ export default {
           iron: "1%"
         },
         {
-          name: "Ice cream sandwich",
+          name: "Endomecatina",
           calories: 237,
           fat: 9.0,
           carbs: 37,
@@ -277,7 +277,7 @@ export default {
           iron: "1%"
         },
         {
-          name: "Eclair",
+          name: "Acetaminofeno",
           calories: 262,
           fat: 16.0,
           carbs: 23,
@@ -287,7 +287,7 @@ export default {
           iron: "7%"
         },
         {
-          name: "Cupcake",
+          name: "Diclofenaco",
           calories: 305,
           fat: 3.7,
           carbs: 67,
@@ -297,7 +297,7 @@ export default {
           iron: "8%"
         },
         {
-          name: "Gingerbread",
+          name: "Meloxica",
           calories: 356,
           fat: 16.0,
           carbs: 49,

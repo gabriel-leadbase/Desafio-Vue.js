@@ -1,27 +1,25 @@
 const routes = [
   {
-    path: "/",
-    component: () => import("src/layouts/AdminLayout.vue"),
+    path: "/vendedor",
+    redirect: "/vendedor/index",
+    component: () => import("src/layouts/VendedorLayout.vue"),
     children: [
-      { name: "feed", path: "", component: () => import("pages/index.vue") },
       {
-        name: "feedItem",
-        path: "/feed/:feedId",
-        component: () => import("pages/feedItemDetails.vue")
+        path: "index",
+        component: () => import("pages/Vendedor.vue")
       }
     ]
   },
   {
     path: "/admin",
+    redirect: "/admin/index",
     component: () => import("src/layouts/AdminLayout.vue"),
     children: [
       {
-        name: "index",
         path: "index",
         component: () => import("pages/Admin.vue")
       },
       {
-        name: "medicamentos",
         path: "medicamentos",
         component: () =>
           import("components/Admin/Medicamentos/Medicamentos.vue")
@@ -29,17 +27,22 @@ const routes = [
       {
         name: "vendas",
         path: "vendas",
-        component: () => import("components/Admin/Vendas/Vendas.vue"),
-        children: []
+        component: () => import("components/Admin/Vendas/Vendas.vue")
       },
       {
-        name: "unidades",
         path: "vendas/unidades",
         component: () =>
           import("components/Admin/Vendas/ListaUnidadesVendidas.vue")
+      },
+      {
+        name: "unidades",
+        path: "vendas/vendedor",
+        component: () =>
+          import("components/Admin/Vendas/ListaVendasVendedor.vue")
       }
     ]
   },
+
   {
     path: "/login",
     component: () => import("layouts/LoginLayout.vue"),

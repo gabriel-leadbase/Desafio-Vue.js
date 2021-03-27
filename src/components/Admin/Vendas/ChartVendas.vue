@@ -15,7 +15,7 @@ export default {
       return {
            series: [{
             name: 'vendas',
-            data: [2.3, 3.1, 4.0, 10, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 15]
+            data: [2, 3, 4, 10, 4, 30, 32, 23, 14, 8, 5, 15]
           }],
 
 
@@ -87,7 +87,7 @@ export default {
 
             },
             title: {
-              text: 'Gráfico de vendas por hora ao logo dos dias',
+              text: 'Gráfico de vendas por hora ao logo do dias',
               floating: true,
               offsetY: 330,
               align: 'center',

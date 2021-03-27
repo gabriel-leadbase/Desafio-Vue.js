@@ -10,12 +10,17 @@
     />
     <q-btn
       v-if="!smallWindowSize"
-      :to="{ path: '/admin/index' }"
+      :to="{ path: InitialPagetoPath }"
       class="q-mr-sm"
       flat
       label="Página inicial"
     />
-    <q-btn v-if="!smallWindowSize" class="q-mr-sm" flat label="Hoje" />
+    <q-btn
+      v-if="!smallWindowSize"
+      class="q-mr-sm"
+      flat
+      label="Tabelas Vendedor"
+    />
     <q-btn v-if="!smallWindowSize" class="q-mr-sm" flat label="Seguindo" />
     <q-space></q-space>
 
@@ -48,6 +53,7 @@ export default {
       type: Boolean,
       default: false
     },
+    InitialPagetoPath: String,
     setDrawer: Function
   },
   data() {
@@ -60,6 +66,7 @@ export default {
       return this.$q.screen.lt.sm ? true : false;
     }
   },
+  mounted() {},
   methods: {
     changeDrawer() {
       this.setDrawer(!this.drawer);

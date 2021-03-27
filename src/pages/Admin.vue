@@ -32,7 +32,7 @@ const listItens = [
   {
     id: 4,
     title: "Vendedores",
-    path: "/admin/vendedores",
+    path: "vendas/vendedor",
     content: "Vendas por vendedor (Valor total, ...",
     icon: "record_voice_over"
   }
