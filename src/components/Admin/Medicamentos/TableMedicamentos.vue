@@ -121,13 +121,18 @@
             <q-btn
               color="red"
               label="Deletar"
-              @click="deleteItem(props.row)"
+              @click="callDialogDeleteItem(props.row)"
               size="md"
             ></q-btn>
           </q-td>
         </q-tr>
       </template>
     </q-table>
+    <q-dialog
+      v-model="dialogQuestionState"
+    >
+    <card-alert-confirm question="Deseja realmente deletar ?" title="Confirmar ?" @confirmDeleteItem="confirmDeleteItem" />
+    </q-dialog>
   </div>
 </template>
 
@@ -135,22 +140,33 @@
 import FormAddMedicamento from "./FormAddMedicamento";
 import FormEditMedicamento from "./FormEditMedicamento";
 import listaMedicamentos from "./../../data/listaMedicamentos";
+import CardAlertConfirm from "./../../CardAlertConfirm";
+
 export default {
   components: {
         FormAddMedicamento,
-        FormEditMedicamento
+        FormEditMedicamento,
+        CardAlertConfirm
     },
   methods: {
 
     deleteItem(item) {
-      const index = this.listaMedicamentos.indexOf(item);
-      confirm("deseja realmente deletar este item?") &&
-        this.listaMedicamentos.splice(index, 1) && this.$q.notify({
+
+    },
+    callDialogDeleteItem(item){
+      this.dialogQuestionState = true
+      this.indexDeleteItem =  this.listaMedicamentos.indexOf(item);
+
+    },
+    confirmDeleteItem(){
+      console.log('oiii');
+      this.listaMedicamentos.splice(this.indexDeleteItem, 1)
+      this.$q.notify({
           color: "green-4",
           textColor: "white",
           icon: "cloud_done",
           message: "Elemento deletado com sucesso"
-        });
+        })
     },
 
     showFormEditItem(item) {
@@ -186,6 +202,8 @@ export default {
   data() {
     return {
       filter: '',
+      indexDeleteItem:null,
+      dialogQuestionState:false,
       listaMedicamentos:listaMedicamentos,
       show_dialog: false,
       showFormAddMedicamento:false,

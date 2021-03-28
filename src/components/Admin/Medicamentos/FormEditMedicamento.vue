@@ -18,12 +18,14 @@
             <q-input
               :rules="inputRules"
               v-model="item.price"
+              type="number"
               label="Preço"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
               :rules="inputRules"
+              type="number"
               v-model="item.calories"
               label="Calorias"
             ></q-input>
@@ -31,12 +33,14 @@
           <div class="col-xs-12 col-md-6">
             <q-input
               :rules="inputRules"
+              type="number"
               v-model="item.fat"
               label="Peso"
             ></q-input>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-input
+              type="number"
               :rules="inputRules"
               v-model="item.carbs"
               label="Carb"
@@ -45,6 +49,7 @@
           <div class="col-xs-12 col-md-6">
             <q-input
               :rules="inputRules"
+              type="number"
               v-model="item.protein"
               label="Proteina"
             ></q-input>
@@ -52,6 +57,7 @@
           <div class="col-xs-12 col-md-6">
             <q-input
               :rules="inputRules"
+              type="number"
               v-model="item.sodium"
               label="Sódio"
             ></q-input>
