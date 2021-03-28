@@ -1,20 +1,20 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
 // we first import the module
 import auth from "./auth";
-
+import createPersistedState from "vuex-persistedstate";
+// Use a new variable and export values to change default behaviour.
+let store = null;
 Vue.use(Vuex);
 
 export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
+    plugins: [createPersistedState()],
     modules: {
       // then we reference it
       auth
     },
 
-    // enable strict mode (adds overhead!)
-    // for dev mode only
     strict: process.env.DEV
   });
 
@@ -31,6 +31,10 @@ export default function(/* { ssrContext } */) {
       Store.hotUpdate({ modules: { auth: newAuth } });
     });
   }
+  // add this so that we export store
+  store = Store;
 
   return Store;
 }
+
+export { store };

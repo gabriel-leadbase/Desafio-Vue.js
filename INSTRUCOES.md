@@ -29,6 +29,10 @@ OBS: \*\*\* Voce deve ter instalado em sua máquina o quasar CLI
 
 - adicionei mapActions para o usuario acessar suas actions, e também para deixar o código mais limpo
 
+- Implementei um bloqueio simples para o usuário não acessar a rota login caso esteja logado.
+  utilizei beforeach e as funções ifAuthenticated, ifNotAuthenticated.
+  - Utilizei também o vuex persister para persistir os dados do state
+
 Administrador
 
 Vendedor

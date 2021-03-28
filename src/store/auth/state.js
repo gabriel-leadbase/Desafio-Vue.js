@@ -3,7 +3,8 @@ export default function() {
     token: "",
     user: {
       name: "",
-      email: ""
+      email: "",
+      type: ""
     },
     loginStatus: "",
     roles: []

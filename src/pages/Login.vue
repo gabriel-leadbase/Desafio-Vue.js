@@ -2,7 +2,7 @@
   <q-layout class="flex flex-center">
     <q-card style="width: 350px">
       <q-card-section class="bg-secondary text-white">
-        <div class="text-h6">Logar Desafio-Vue.js</div>
+        <div class="text-h6">Logar</div>
       </q-card-section>
       <div class="q-pa-md">
         <login-form
@@ -28,13 +28,12 @@ export default {
 
     submitForm(payload) {
       this.loadingFormButton = true;
-
-      //  fake request with setTimeout
       setTimeout(() => {
         this.handleFakeSubmit(payload);
         this.loadingFormButton = false;
       }, 1000);
     },
+
     handleFakeSubmit(payload) {
       const { email, password } = payload;
       this.auth_login_request({ email, password })

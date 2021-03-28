@@ -111,7 +111,7 @@
           <q-td key="sodium" :props="props">{{ props.row.sodium }}</q-td>
           <q-td key="calcium" :props="props">{{ props.row.calcium }}</q-td>
           <q-td key="iron" :props="props">{{ props.row.iron }}</q-td>
-          <q-td key="actions"  :props="props">
+          <q-td key="actions" class="q-gutter-sm"  :props="props">
             <q-btn
               color="blue"
               label="Atualizar"

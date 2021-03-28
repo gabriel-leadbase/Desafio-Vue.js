@@ -23,6 +23,7 @@
     <q-input
       style="width: 300px;"
       outlined
+      dark
       borderless
       dense
       rounded

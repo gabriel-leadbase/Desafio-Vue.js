@@ -40,7 +40,7 @@ export default {
         {
           name: "valor",
           align: "center",
-          label: "Valor total",
+          label: "Valor total (R$)",
           field: "calories",
           sortable: true
         },

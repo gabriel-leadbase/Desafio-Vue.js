@@ -1,16 +1,13 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar style="height:65px" class="bg-secondary text-white  ">
+  <q-layout>
+    <q-header>
+      <q-toolbar style="height:65px" class="bg-secondary text-white">
         <q-toolbar-title>
-          Login
+          Desafio-Vue.js
         </q-toolbar-title>
-        <div></div>
       </q-toolbar>
     </q-header>
-    <q-page-container>
-      <router-view />
-    </q-page-container>
+    <router-view />
   </q-layout>
 </template>
 

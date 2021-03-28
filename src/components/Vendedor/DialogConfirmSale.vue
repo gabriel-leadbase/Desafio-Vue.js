@@ -23,7 +23,7 @@
             <div class="text-grey-8 q-gutter-xs">
               <q-btn @click="item.quant++" round dense flat icon="add">
                 <q-tooltip>
-                  Incrementar Quntidade
+                  Incrementar quantidade
                 </q-tooltip>
               </q-btn>
               <q-btn
@@ -35,7 +35,7 @@
                 icon="remove"
               >
                 <q-tooltip>
-                  Decrementar Quntidade
+                  Decrementar quatidade
                 </q-tooltip>
               </q-btn>
             </div>
@@ -47,7 +47,13 @@
     <q-separator />
 
     <q-card-actions align="right">
-      <q-btn flat label="Cancelar" color="primary" v-close-popup />
+      <q-btn
+        flat
+        @click="cancelSell"
+        label="Cancelar"
+        color="primary"
+        v-close-popup
+      />
       <q-btn
         flat
         label="Confirmar"
@@ -87,6 +93,9 @@ export default {
     },
     finishSell() {
       this.$emit("finishSell", this.copyItens);
+    },
+    cancelSell() {
+      this.$emit("cancelSell");
     }
   },
   data() {

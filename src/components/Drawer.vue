@@ -22,8 +22,8 @@
           <q-item-section>
             {{ item.label }}
           </q-item-section>
+          <q-separator />
         </q-item>
-        <q-separator />
       </q-list>
     </q-scroll-area>
   </q-drawer>

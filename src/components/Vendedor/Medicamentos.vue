@@ -1,6 +1,7 @@
 <template>
   <div>
     <q-table
+      class="q-gutter-xs"
       :selected-rows-label="getSelectedString"
       selection="multiple"
       :selected.sync="selected"
@@ -34,7 +35,11 @@
           </template>
         </q-input>
         <q-dialog v-model="dialogSale">
-          <dialog-confirm-sale @finishSell="finishSell" :itens="selected" />
+          <dialog-confirm-sale
+            @cancelSell="cancelSell"
+            @finishSell="finishSell"
+            :itens="selected"
+          />
         </q-dialog>
       </template>
     </q-table>
@@ -64,6 +69,9 @@ export default {
       });
       this.selected = [];
     },
+    cancelSell(payload) {
+      this.selected = [];
+    },
     handleSaleButtonClick() {
       this.selected.length ? (this.dialogSale = true) : "";
     }
@@ -84,7 +92,7 @@ export default {
           name: "name",
           required: true,
           label: "Nome (100g serving)",
-          align: "left",
+          align: "center",
           field: row => row.name,
           format: val => `${val}`,
           sortable: true

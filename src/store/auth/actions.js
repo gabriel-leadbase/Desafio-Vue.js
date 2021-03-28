@@ -11,7 +11,8 @@ const auth_login_request = ({ commit, dispatch }, payload) => {
       let token = "xxxxxxxxxx.yyyyyyyyyyyy.zzzzzzzzzzzz";
       let user = {
         email: payload.email,
-        name: "Administrador"
+        name: "Administrador",
+        type: "Admin"
       };
       commit("auth_login_request", "finish");
       setToken(token);
@@ -22,7 +23,8 @@ const auth_login_request = ({ commit, dispatch }, payload) => {
       let token = "xxxxxxxxxx.yyyyyyyyyyyy.zzzzzzzzzzzz";
       let user = {
         email: payload.email,
-        name: "Vendedor"
+        name: "Vendedor",
+        type: "Vendedor"
       };
       commit("auth_login_request", "finish");
       setToken(token);
