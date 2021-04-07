@@ -48,14 +48,18 @@
 
 ## Questions & Answers 
 
-Q: Why i use CDN?
-A: I am not used to the vue ecosystem.
+<p>Q: Why i use CDN?</p>
 
-Q: Why this application don't have a local storage or any other methods?
-A: Unfortunately at first I couldn't understand the method who storage functions, so I left it as a sercundary feature(I'll implement it in the next update).
+<p>A: I am not used to the vue ecosystem.</p>
 
-Q: You have many css files, and some empty, why did you leave them even though you know there is nothing?
-A: They're very useful, the css file separation makes maintenance much easier, but css was left as a secondary implementation.
+<p>Q: Why this application don't have a local storage or any other methods?</p>
 
-Q: You left some important features, why?
-A: I was trying to do as much as better, but those are harder for me, and i couldn't do it everything on time.
+<p>A: Unfortunately at first I couldn't understand the method who storage functions, so I left it as a sercundary feature(I'll implement it in the next update).</p>
+
+<p>Q: You have many css files, and some empty, why did you leave them even though you know there is nothing?</p>
+
+<p>A: They're very useful, the css file separation makes maintenance much easier, but css was left as a secondary implementation.</p>
+
+<p>Q: You left some important features, why?</p>
+
+<p>A: I was trying to do as much as better, but those are harder for me, and i couldn't do it everything on time.</p>
