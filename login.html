@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <title>Login - FasterDoc</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <link href="./css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+    <header class="sticky-lg-top">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <span class="material-icons">
+                stacked_bar_chart
+              </span>
+              FasterDoc
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- /HEADER -->
+
+    <main class="container pt-3">
+      <div class="row">
+        <div class="card">
+          <h5 class="card-header">Login</h5>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Senha:</label>
+                <input type="password" class="form-control" id="password">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="lembrar">
+                <label class="form-check-label" for="lembrar">Lembrar de mim!</label>
+              </div>
+              <a href="./index.html" class="btn btn-dark">Adm</a>
+              <a href="./seller.html" class="btn btn-dark">Seller</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./js/script.js" charset="utf-8"></script>  
+</body>
+
+</html>
