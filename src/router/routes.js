@@ -9,10 +9,11 @@ const routes = [
   },
 
   {
-    path: '/main',
+    path: '/logged',
     component: () => import('layouts/Main.vue'),
     children: [
-      { path: 'main', component: () => import('pages/Index.vue') }
+      { path: 'user', component: () => import('pages/User.vue') },
+      { path: 'admin', component: () => import('pages/Admin.vue') }
     ]
   },
 

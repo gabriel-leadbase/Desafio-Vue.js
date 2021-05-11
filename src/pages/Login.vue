@@ -32,13 +32,14 @@
           </template>
         </q-input>
       </div>
-      
+
       <div class="col">
         <q-btn 
           class="fit"
           color="light-green-5" 
           text-color="black" 
           label="Logar" 
+          to="/main"
           :disable="checkLogin(this.login, this.password)"/>
       </div>
     </div>
