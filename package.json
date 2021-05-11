@@ -1,8 +1,8 @@
 {
   "name": "juan-matheus",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "Venda de farmacos.",
+  "productName": "Farmacia do Juan",
   "author": "Juan Matheus <juanfideli@hotmail.com>",
   "private": true,
   "scripts": {
