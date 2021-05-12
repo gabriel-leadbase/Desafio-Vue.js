@@ -11,7 +11,6 @@
               v-model="newProduct.name" 
               label="Nome do Produto" />
           </div>
-
           <div class="col-2">
             <q-input
               :dense="true" 
@@ -83,6 +82,8 @@
 </template>
 
 <script>
+import $store from 'src/store/user.js'
+
 import VBorder from 'components/VBorder.vue'
 import Subtitle from 'components/Subtitle.vue'
 
@@ -136,6 +137,7 @@ export default {
         price: null,
       },
       editProduct: false,
+      user:{},
     }
   },
 
@@ -167,6 +169,6 @@ export default {
         this.products.push({name: newProduct.name, price: newProduct.price})
       }
     }
-  }
+  },
 }
 </script>

@@ -25,15 +25,23 @@
       bordered
       content-class="bg-grey-1"
     >
-      <q-avatar 
-        class="q-ma-sm" 
-        size="100px" 
-        font-size="52px" 
-        color="teal" 
-        text-color="white" 
-        icon="directions"/>
-        
-      <q-list class="teste">
+      <div class="container-user">
+        <q-avatar 
+          class="q-ma-sm" 
+          size="100px" 
+          font-size="52px" 
+          color="teal" 
+          text-color="white" 
+          icon="directions"/>
+        <div class="container-user-info">
+          <p class="user-name">{{ user.name }}</p>
+          <p v-if="user.permission" class="user-permission">Administrador</p>
+          <p v-else class="user-permission">Vendedor</p>
+        </div>
+      </div>
+      
+      
+      <q-list>
         <q-item-label
           header
           class="text-grey-8"
@@ -54,6 +62,7 @@
 </template>
 
 <script>
+import $store from 'src/store/user.js'
 import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
@@ -69,15 +78,37 @@ export default {
   components: { EssentialLink },
   data () {
     return {
+      user: {},
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      essentialLinks: linksData,
     }
+  },
+
+  created(){
+    this.user = $store.state.user == null ? null : $store.state.user
   }
 }
 </script>
 
 <style>
-  .teste {
-    color: red;
+  .container-user{
+    display: flex;
   }
+
+  .container-user-info{
+    padding: 10px;
+  }
+  .container-user-info p{
+    margin-bottom: 10px;
+  }
+
+  .user-name{
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .user-permission{
+    font-size: 12px;
+  }
+
 </style>
