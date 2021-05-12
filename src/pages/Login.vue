@@ -42,7 +42,7 @@
           color="light-green-5" 
           text-color="black" 
           label="Logar"
-          @click="verifyPermission()"
+          @click="verifyLogin()"
           :disable="checkLogin(this.login, this.password)"/>
       </div>
     </div>
@@ -84,7 +84,8 @@ export default {
   },
 
   methods:{
-    verifyPermission(){
+    // Verify if user exist, save user on store and redirect to next page
+    verifyLogin(){
       this.loginError = true
       for(var x = 0; x < this.users.length; x++){
         if(this.users[x].user == this.login && this.users[x].password == this.password){
@@ -100,6 +101,7 @@ export default {
       }
     },
 
+    // Disable or enable login button
     checkLogin(login, password){
       console.log(login, password)
       if(login.length > 4 && password.length > 4){

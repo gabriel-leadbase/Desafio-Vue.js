@@ -69,7 +69,6 @@ export default {
     return {
       user: {},
       leftDrawerOpen: false,
-      essentialLinks: linksData,
     }
   },
 

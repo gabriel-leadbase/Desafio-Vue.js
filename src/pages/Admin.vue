@@ -55,7 +55,7 @@
                   </q-td>
 
                   <q-td key="edit" :props="props">
-                    <q-btn color="light-green-5" icon="edit"/>
+                    <q-btn color="light-green-5" icon="edit" @click="findtoUpdateProduct(props.row.name)"/>
                   </q-td>
 
                   <q-td key="delete" :props="props">
@@ -66,15 +66,37 @@
             </q-table>
           </div>
         </template>
-        
-        <VBorder v-if="editProduct">
-          <div></div>
-        </VBorder>
       </div>
 
-      <VBorder>
-        <div class="row">
-          teste para depois
+      <VBorder v-if="editingProduct">
+        <Subtitle :label="'Editar Produto'"/>
+        <div class="row q-gutter-sm">
+          <div class="col-3">
+            <q-input
+              :dense="true" 
+              filled 
+              v-model="editedProdutc.name" 
+              label="Nome do Produto" />
+          </div>
+          <div class="col-2">
+            <q-input
+              :dense="true" 
+              filled
+              v-model="editedProdutc.price"
+              label="Preço"
+              mask="#.##"
+              fill-mask="0"
+              reverse-fill-mask
+              input-class="text-right"
+            />
+          </div>
+
+          <div class="col-2">
+            <q-btn 
+              color="light-green-5"  
+              label="Adicionar" 
+              @click="updateProduct(editedProdutc)"/>
+          </div>
         </div>
       </VBorder>
     </div>
@@ -82,7 +104,6 @@
 </template>
 
 <script>
-import $store from 'src/store/user.js'
 
 import VBorder from 'components/VBorder.vue'
 import Subtitle from 'components/Subtitle.vue'
@@ -136,38 +157,98 @@ export default {
         name: '',
         price: null,
       },
-      editProduct: false,
+      editingProduct: false,
+      editedProdutc: {
+        name: '',
+        price: null,
+      },
       user:{},
     }
   },
 
   methods:{
-    deleteProduct(productName){
-      for(var x = 0; x<=this.products.length; x++){
-        if (productName == this.products[x].name){
-          this.products.splice(x, 1)
-          return null
-        }
-      }
-      console.log(productName)
-    },
-
+    // Validade and create a new product
     addProduct(newProduct){
       if(newProduct.name.length == 0){
-        console.log("O nome não pode estar vazio")
+        this.$q.notify({
+          message: 'O nome não pode estar vazio!',
+          type: 'negative'
+        })
       }else if(newProduct.price <= 0){
         console.log("Valor inválido")
+        this.$q.notify({
+          message: 'O preço dever ser maior que 0!',
+          type: 'negative'
+        })
       }else if(newProduct.name){
         for(let product of this.products){
           console.log(product.name.toLowerCase(), newProduct.name.toLowerCase())
           if(product.name.toLowerCase() == newProduct.name.toLowerCase()){
-            console.log("O nome do produto deve ser único")
+            this.$q.notify({
+              message: 'Já existe um produto cadastrado com esse nome!',
+              type: 'negative'
+            })
             return null
           }
         }
-        
+        this.$q.notify({
+          message: 'Produto cadastrado!',
+          type: 'positive'
+        })
         this.products.push({name: newProduct.name, price: newProduct.price})
       }
+    },
+
+    // Delete product by name
+    deleteProduct(productName){
+      for(var x = 0; x < this.products.length; x++){
+        if (productName == this.products[x].name){
+          this.products.splice(x, 1)
+          this.$q.notify({
+            message: 'O produto foi deletado!',
+            type: 'positive'
+          })
+          return null
+        }
+      }
+    },
+
+    // Find product to be updated
+    findtoUpdateProduct(productName){
+      for(var x = 0; x<this.products.length; x++){
+        if (productName == this.products[x].name){
+          this.editedProdutc = JSON.parse(JSON.stringify(this.products[x]))
+          this.editedProdutc.index = x
+          this.editingProduct = true
+          return null
+        }
+      }
+    },
+
+    // Validate and update product
+    updateProduct(product){
+      console.log(product)
+      for(var x = 0; x < this.products.length; x++){
+        console.log(this.products[x], x)
+        if(product.name == this.products[x].name){
+          this.$q.notify({
+            message: 'Já existe um produto cadastrado com esse nome!',
+            type: 'negative'
+          })
+          return null
+        }
+      }
+
+      var index = product.index
+      delete product.index
+
+      this.products[index] = product
+      this.editingProduct = false
+
+      this.$q.notify({
+        message: 'Produto alterado com sucesso!',
+        type: 'positive'
+      })
     }
   },
 }
