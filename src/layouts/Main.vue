@@ -33,6 +33,7 @@
           color="teal" 
           text-color="white" 
           icon="directions"/>
+          
         <div class="container-user-info">
           <p class="user-name">{{ user.name }}</p>
           <p v-if="user.permission" class="user-permission">Administrador</p>
@@ -44,13 +45,14 @@
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
-        >
+          class="text-grey-8">
         </q-item-label>
+
         <q-btn flat color="red" @click="logout()">
           <q-icon left  name="logout"/>
           <div>Deslogar</div>
         </q-btn>
+
       </q-list>
     </q-drawer>
 

@@ -78,6 +78,7 @@
               v-model="editedProdutc.name" 
               label="Nome do Produto" />
           </div>
+
           <div class="col-2">
             <q-input
               :dense="true" 
@@ -94,23 +95,29 @@
           <div class="col-2">
             <q-btn 
               color="light-green-5"  
-              label="Adicionar" 
+              label="Editar"
               @click="updateProduct(editedProdutc)"/>
           </div>
         </div>
       </VBorder>
+
+      <div class="row q-gutter-sm q-pl-sm">
+        <SimpleCard title="Valor Total" :content="'R$ '+totalSales.toFixed(2)"/>
+        <SimpleCard title="Ticket Médio" :content="averageTicket"/>
+        <SimpleCard title="Unidades Vendidas" :content="amount"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import VBorder from 'components/VBorder.vue'
 import Subtitle from 'components/Subtitle.vue'
+import SimpleCard from 'components/SimpleCard.vue'
 
 export default {
   name: 'PageAdmin',
-  components: { VBorder, Subtitle },
+  components: { VBorder, Subtitle, SimpleCard },
   data(){
     return {
       products:[
@@ -153,6 +160,32 @@ export default {
           label: 'Deletar',
         }
       ],
+      sales:[
+        {
+          product: 'Paracetamol',
+          amount: 111,
+          seller:  'João Carlos',
+          value: 566.1
+        },
+        {
+          product: 'Alphagan Z',
+          amount: 8,
+          seller:  'João Carlos',
+          value: 415.92
+        },
+        {
+          product: 'Paracetamol',
+          amount: 20,
+          seller:  'Alisson Almagro',
+          value: 102
+        },
+        {
+          product: 'Alphagan Z',
+          amount: 30,
+          seller:  'Alisson Almagro',
+          value: 1559.7
+        }
+      ],
       newProduct:{
         name: '',
         price: null,
@@ -163,6 +196,9 @@ export default {
         price: null,
       },
       user:{},
+      totalSales: 0,
+      averageTicket: 0,
+      amount: 0,
     }
   },
 
@@ -251,5 +287,16 @@ export default {
       })
     }
   },
+
+  created(){
+    // Calculate total sales, units sold and average ticket
+    var count = 0
+    for(let sale of this.sales){
+      this.totalSales = sale.value + this.totalSales
+      this.amount = sale.amount
+      count++
+    }
+    this.averageTicket = (this.totalSales/count).toFixed(2)
+  }
 }
 </script>
