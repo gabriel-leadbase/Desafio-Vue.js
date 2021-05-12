@@ -5,6 +5,9 @@
     </div>
 
     <div class="column q-pa-md q-gutter-y-md">
+      <div v-if="loginError" >
+        <p class="login-error">Usuário ou senha incorreta!</p>
+      </div>
       <div class="col">
         <q-input
           class="col"
@@ -38,8 +41,8 @@
           class="fit"
           color="light-green-5" 
           text-color="black" 
-          label="Logar" 
-          to="/main"
+          label="Logar"
+          @click="verifyPermission()"
           :disable="checkLogin(this.login, this.password)"/>
       </div>
     </div>
@@ -47,6 +50,8 @@
 </template>
 
 <script>
+import $store from 'src/store/user.js'
+
 export default {
   name: 'PageIndex',
   data() {
@@ -54,12 +59,50 @@ export default {
       login: '',
       password: '',
       isPwd: true,
+      loginError: false,
+      users:[
+        {
+          user: 'admin',
+          password: 'admin',
+          name: 'Juan Matheus',
+          permission: true,
+        },
+        {
+          user: 'joao01',
+          password: 'joao01',
+          name: 'João Carlos',
+          permission: false,
+        },
+        {
+          user: 'alisson01',
+          password: 'alisson01',
+          name: 'Alisson Almagro',
+          permission: false,
+        }
+      ]
     }
   },
 
   methods:{
+    verifyPermission(){
+      this.loginError = true
+      for(var x = 0; x < this.users.length; x++){
+        if(this.users[x].user == this.login && this.users[x].password == this.password){
+          if(this.users[x].permission){
+            $store.commit('setUser', this.users[x])
+            this.$router.push({path: '/logged/admin'})
+          }else{
+            $store.commit('setUser', this.users[x])
+            this.$router.push({path: '/logged/user'})
+          }
+          this.loginError = false
+        }
+      }
+    },
+
     checkLogin(login, password){
-      if(login && password){
+      console.log(login, password)
+      if(login.length > 4 && password.length > 4){
         return false
       }
       return true
@@ -69,6 +112,11 @@ export default {
 </script>
 
 <style scoped>
+  .login-error{
+    color: rgb(226, 11, 11);
+    margin: 0;
+  }
+
   .login-info{
     background: #8bc34a;
   }
