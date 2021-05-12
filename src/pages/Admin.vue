@@ -60,7 +60,7 @@
                   </q-td>
 
                   <q-td key="delete" :props="props">
-                    <q-btn color="red-8" icon="delete" @click="deleteProduct(props.row)"/>
+                    <q-btn color="red-8" icon="delete"  @click="deleteProduct(props.row.name)"/>
                   </q-td>
                 </q-tr>
               </template>
@@ -68,7 +68,7 @@
           </div>
         </template>
         
-        <VBorder>
+        <VBorder v-if="editProduct">
           <div></div>
         </VBorder>
       </div>
@@ -131,26 +131,22 @@ export default {
           label: 'Deletar',
         }
       ],
-
       newProduct:{
         name: '',
         price: null,
       },
+      editProduct: false,
     }
   },
 
   methods:{
     deleteProduct(productName){
-      // var products = JSON.parse(JSON.stringify(this.products))
-      // console.log(products)
-      // this.products = products.forEach(function(product, index){
-      //   console.log(111111111111)
-      //   console.log(productName, product.name, index)
-      //   if (productName == product.name){
-      //     products.splice(index, 1)
-      //     return products
-      //   }
-      // })
+      for(var x = 0; x<=this.products.length; x++){
+        if (productName == this.products[x].name){
+          this.products.splice(x, 1)
+          return null
+        }
+      }
       console.log(productName)
     },
 
@@ -160,10 +156,11 @@ export default {
       }else if(newProduct.price <= 0){
         console.log("Valor inválido")
       }else if(newProduct.name){
-        for(var product of this.products){
-          if(product.name == newProduct.name){
-            console.log(product.name)
-            return false
+        for(let product of this.products){
+          console.log(product.name.toLowerCase(), newProduct.name.toLowerCase())
+          if(product.name.toLowerCase() == newProduct.name.toLowerCase()){
+            console.log("O nome do produto deve ser único")
+            return null
           }
         }
         
