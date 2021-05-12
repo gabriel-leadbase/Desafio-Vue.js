@@ -47,11 +47,10 @@
           class="text-grey-8"
         >
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-btn flat color="red" @click="logout()">
+          <q-icon left  name="logout"/>
+          <div>Deslogar</div>
+        </q-btn>
       </q-list>
     </q-drawer>
 
@@ -63,24 +62,21 @@
 
 <script>
 import $store from 'src/store/user.js'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Logout',
-    icon: 'logout',
-    link: ''
-  },
-];
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
   data () {
     return {
       user: {},
       leftDrawerOpen: false,
       essentialLinks: linksData,
+    }
+  },
+
+  methods:{
+    logout(){
+      $store.commit('setUser', null)
+      this.$router.push({path: '/'})
     }
   },
 
