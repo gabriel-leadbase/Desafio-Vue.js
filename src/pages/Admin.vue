@@ -9,7 +9,8 @@
               :dense="true" 
               filled 
               v-model="newProduct.name" 
-              label="Nome do Produto" />
+              label="Nome do Produto"
+            />
           </div>
           <div class="col-2">
             <q-input
@@ -23,12 +24,12 @@
               input-class="text-right"
             />
           </div>
-
           <div class="col-2">
             <q-btn 
               color="light-green-5"  
               label="Adicionar" 
-              @click="addProduct(newProduct)"/>
+              @click="addProduct(newProduct)"
+            />
           </div>
         </div>
       </VBorder>
@@ -40,29 +41,50 @@
               color="green"
               card-class="bg-light-green-2"
               row-key="name"
+              title="Medicamentos"
+              :filter="filter"
+              no-results-label="Nenhum resultado encontrado."
               no-data-label="Nenhum produto cadastrado."
               :data="products"
-              :columns="columns">
+              :columns="columns"
+            >
+
+              <template v-slot:top-right>
+                <q-input 
+                  dense 
+                  debounce="100" 
+                  v-model="filter"
+                  placeholder="Pesquisar"
+                >
+                  <q-icon slot="append" name="search" />
+                </q-input>
+              </template>
 
               <template v-slot:body="props">
                 <q-tr :props="props">
                   <q-td key="name" :props="props">
                     {{ props.row.name }}
                   </q-td>
-
                   <q-td key="price" :props="props">
                     {{ props.row.price }}
                   </q-td>
-
                   <q-td key="edit" :props="props">
-                    <q-btn color="light-green-5" icon="edit" @click="findtoUpdateProduct(props.row.name)"/>
+                    <q-btn 
+                      color="light-green-5"
+                      icon="edit" 
+                      @click="findtoUpdateProduct(props.row.name)"
+                    />
                   </q-td>
-
                   <q-td key="delete" :props="props">
-                    <q-btn color="red-8" icon="delete"  @click="deleteProduct(props.row.name)"/>
+                    <q-btn 
+                      color="red-8" 
+                      icon="delete"  
+                      @click="deleteProduct(props.row.name)"
+                    />
                   </q-td>
                 </q-tr>
               </template>
+
             </q-table>
           </div>
         </template>
@@ -76,9 +98,9 @@
               :dense="true" 
               filled 
               v-model="editedProdutc.name" 
-              label="Nome do Produto" />
+              label="Nome do Produto" 
+            />
           </div>
-
           <div class="col-2">
             <q-input
               :dense="true" 
@@ -91,12 +113,12 @@
               input-class="text-right"
             />
           </div>
-
           <div class="col-2">
             <q-btn 
               color="light-green-5"  
               label="Editar"
-              @click="updateProduct(editedProdutc)"/>
+              @click="updateProduct(editedProdutc)"
+            />
           </div>
         </div>
       </VBorder>
@@ -120,7 +142,7 @@ export default {
   components: { VBorder, Subtitle, SimpleCard },
   data(){
     return {
-      products:[
+      products: [
         {
           name: 'Paracetamol',
           price: 5.10
@@ -130,7 +152,7 @@ export default {
           price: 51.99
         }
       ],
-      columns:[
+      columns: [
         {
           name: 'name',
           field: row => row.name,
@@ -160,7 +182,7 @@ export default {
           label: 'Deletar',
         }
       ],
-      sales:[
+      sales: [
         {
           product: 'Paracetamol',
           amount: 111,
@@ -186,7 +208,7 @@ export default {
           value: 1559.7
         }
       ],
-      newProduct:{
+      newProduct: {
         name: '',
         price: null,
       },
@@ -195,7 +217,8 @@ export default {
         name: '',
         price: null,
       },
-      user:{},
+      filter: '',
+      user: {},
       totalSales: 0,
       averageTicket: 0,
       amount: 0,
