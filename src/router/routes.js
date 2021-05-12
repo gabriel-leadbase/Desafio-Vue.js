@@ -12,7 +12,7 @@ const routes = [
     path: '/logged',
     component: () => import('layouts/Main.vue'),
     children: [
-      { path: 'user', component: () => import('pages/User.vue') },
+      { path: 'seller', component: () => import('pages/Seller.vue') },
       { path: 'admin', component: () => import('pages/Admin.vue') }
     ]
   },

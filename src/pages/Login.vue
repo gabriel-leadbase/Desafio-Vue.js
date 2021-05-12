@@ -5,9 +5,6 @@
     </div>
 
     <div class="column q-pa-md q-gutter-y-md">
-      <div v-if="loginError" >
-        <p class="login-error">Usuário ou senha incorreta!</p>
-      </div>
       <div class="col">
         <q-input
           class="col"
@@ -59,7 +56,6 @@ export default {
       login: '',
       password: '',
       isPwd: true,
-      loginError: false,
       users:[
         {
           user: 'admin',
@@ -86,7 +82,6 @@ export default {
   methods:{
     // Verify if user exist, save user on store and redirect to next page
     verifyLogin(){
-      this.loginError = true
       for(var x = 0; x < this.users.length; x++){
         if(this.users[x].user == this.login && this.users[x].password == this.password){
           if(this.users[x].permission){
@@ -94,11 +89,15 @@ export default {
             this.$router.push({path: '/logged/admin'})
           }else{
             $store.commit('setUser', this.users[x])
-            this.$router.push({path: '/logged/user'})
+            this.$router.push({path: '/logged/seller'})
           }
-          this.loginError = false
+          return null
         }
       }
+      this.$q.notify({
+        message: 'Login/Senha incorreto!',
+        type: 'negative'
+      })
     },
 
     // Disable or enable login button
